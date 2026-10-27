@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>مفاهیم کلیدی ممیزی C5 — پنج اسلاید</title>
-<meta name="description" content="پنج اسلاید آموزشی درباره معیارهای پایه، تشدید و تکمیلی، نقش‌ها، attestation و نوع ۱ و ۲ در C5:2026">
+<title>مفاهیم کلیدی ممیزی C5 — شش اسلاید</title>
+<meta name="description" content="شش اسلاید آموزشی؛ معرفی C5:2026، معیارهای پایه، تشدید و تکمیلی، نقش‌ها، attestation و نوع ۱ و ۲">
 <style>
   :root{
     --navy:#0c2238;
@@ -269,6 +269,35 @@
   }
   .bottom-note b{color:var(--navy)}
 
+  .intro-grid{
+    flex:1;min-height:0;display:grid;grid-template-columns:1.34fr .66fr;gap:20px;margin-top:18px;
+  }
+  .intro-copy{display:grid;grid-template-rows:repeat(4,minmax(0,1fr));gap:10px;min-height:0}
+  .intro-point{
+    display:flex;flex-direction:column;justify-content:center;
+    background:#f8fafc;border:1px solid var(--line);border-right:3px solid var(--teal);
+    border-radius:10px;padding:9px 13px;min-height:0;
+  }
+  .intro-point b{display:block;margin-bottom:2px;font-size:13px;color:var(--navy)}
+  .intro-point p{margin:0;font-size:11.6px;line-height:1.6;color:#465b70}
+  .intro-facts{
+    display:flex;flex-direction:column;background:linear-gradient(160deg,#0c2238,#123a45);
+    color:#fff;border-radius:14px;padding:14px 16px;min-height:0;
+  }
+  .intro-facts h3{margin:0 0 6px;font-size:12.8px;color:#fff}
+  .fact{flex:1;display:flex;align-items:center;justify-content:space-between;gap:10px;border-bottom:1px solid #ffffff14}
+  .fact b{font-size:25px;line-height:1.2;padding:2px 0;font-weight:800;color:#f3d08a;white-space:nowrap}
+  .fact b.ltr{font-size:19px}
+  .fact span{font-size:10.3px;line-height:1.45;color:#c9dbe4;text-align:left}
+  .fact-note{padding-top:9px;font-size:10px;line-height:1.6;color:#d7e5ec}
+  .intro-note{
+    display:flex;align-items:center;gap:10px;margin-top:12px;margin-bottom:10px;flex:0 0 auto;
+    background:#f4f7fb;border:1px solid var(--line);border-radius:10px;padding:9px 13px;
+    font-size:11.4px;line-height:1.6;color:#40566b;
+  }
+  .intro-note::before{content:"";width:4px;height:23px;border-radius:2px;background:var(--gold);flex:0 0 auto}
+  .intro-note b{color:var(--navy)}
+
   /* controls */
   .hud{
     position:fixed;left:50%;bottom:17px;transform:translateX(-50%);z-index:20;
@@ -310,11 +339,48 @@
 <body>
 <div class="deck" id="deck">
 
-  <!-- S1 -->
-  <section class="slide active" id="s1" aria-label="اسلاید ۱: سه نوع معیار" aria-hidden="false">
+  <section class="slide active" id="s0" aria-label="اسلاید ۱: معرفی C5:2026" aria-hidden="false">
     <div class="slide-inner">
       <header class="s-head">
-        <div class="s-num">01 / 05</div>
+        <div class="s-num">01 / 06</div>
+        <div class="kicker">معرفی استاندارد</div>
+        <h1>حسابرسی ابر با <span class="accent ltr">C5:2026</span></h1>
+        <p class="lead">کاتالوگ معیارهای امنیت ابری BSI و زبان مشترک ارائه‌دهنده، مشتری و ممیز.</p>
+      </header>
+
+      <div class="intro-grid">
+        <div class="intro-copy">
+          <div class="intro-point"><b>C5 چیست؟</b><p>کاتالوگ معیارهای امنیت ابری BSI؛ چارچوبی برای طراحی، اجرا و حسابرسی کنترل‌های ارائه‌دهندهٔ خدمات ابری.</p></div>
+          <div class="intro-point"><b>چه چیزی را می‌سنجد؟</b><p>۱۷ حوزهٔ امنیتی و ۶ معیار عمومی؛ از هویت و رمزنگاری تا عملیات، زنجیرهٔ تأمین و پاسخ به رخداد.</p></div>
+          <div class="intro-point"><b>حسابرسی چگونه است؟</b><p>ممیز مستقل طراحی و استقرار (نوع ۱) یا اثربخشی اجرا در یک دوره (نوع ۲) را بر پایهٔ ISAE 3000 ارزیابی می‌کند.</p></div>
+          <div class="intro-point"><b>خروجی به چه کار می‌آید؟</b><p>گزارش attestation با دامنهٔ مشخص؛ مبنای ارزیابی مشتری، مقایسهٔ ارائه‌دهندگان و پاسخ به نیاز رگولاتور.</p></div>
+        </div>
+
+        <aside class="intro-facts">
+          <h3>C5 در یک نگاه</h3>
+          <div class="fact"><b>۱۷ + ۶</b><span>حوزهٔ امنیتی + معیار عمومی</span></div>
+          <div class="fact"><b>۱۷۴</b><span>معیار (شامل ۶ GC)</span></div>
+          <div class="fact"><b>۶۲۹</b><span>آیتم قابل حسابرسی</span></div>
+          <div class="fact"><b class="ltr">Type 1 / 2</b><span>مقطع طراحی یا دورهٔ اجرا</span></div>
+          <div class="fact-note">زیرمعیارها: B ۴۶۲ · AS ۲۹ · AC ۱۳۲ + ۶ GC</div>
+        </aside>
+      </div>
+
+      <div class="intro-note"><b>نکتهٔ کلیدی:</b> C5 گواهینامه نیست؛ گزارش attestation با دامنه، دوره و انحراف‌های مشخص است.</div>
+
+      <footer class="s-foot">
+        <span>مبنا: <b>C5:2026</b> (EN <span class="ltr">v1.0.1</span>) · خلاصهٔ غیررسمی</span>
+        <a class="site" href="https://gcra.ir/audit/" target="_blank" rel="noopener">نسخهٔ آنلاین: <span class="ltr">https://gcra.ir/audit/</span></a>
+        <span>۱ / ۶</span>
+      </footer>
+    </div>
+  </section>
+
+  <!-- S1 -->
+  <section class="slide" id="s1" aria-label="اسلاید ۲: سه نوع معیار" aria-hidden="true">
+    <div class="slide-inner">
+      <header class="s-head">
+        <div class="s-num">02 / 06</div>
         <div class="kicker">معیارها</div>
         <h1>سه نوع معیار؛ یک اشتباه رایج</h1>
         <p class="lead">پایه، تشدید و تکمیلی سه سطح بلوغ نیستند؛ دو رابطهٔ متفاوت با معیار پایه دارند.</p>
@@ -356,16 +422,16 @@
       <footer class="s-foot">
         <span>مبنا: <b>C5:2026</b> (EN <span class="ltr">v1.0.1</span>) · خلاصهٔ غیررسمی</span>
         <a class="site" href="https://gcra.ir/audit/" target="_blank" rel="noopener">نسخهٔ آنلاین: <span class="ltr">https://gcra.ir/audit/</span></a>
-        <span>۱ / ۵</span>
+        <span>۲ / ۶</span>
       </footer>
     </div>
   </section>
 
   <!-- S2 -->
-  <section class="slide" id="s2" aria-label="اسلاید ۲: نقش‌ها" aria-hidden="true">
+  <section class="slide" id="s2" aria-label="اسلاید ۳: نقش‌ها" aria-hidden="true">
     <div class="slide-inner">
       <header class="s-head">
-        <div class="s-num">02 / 05</div>
+        <div class="s-num">03 / 06</div>
         <div class="kicker">نقش‌ها</div>
         <h1>چه کسی تصمیم می‌گیرد؟</h1>
         <p class="lead">هیچ‌کس به‌تنهایی؛ چهار نقش، چهار تصمیم متفاوت.</p>
@@ -410,16 +476,16 @@
       <footer class="s-foot">
         <span>تصمیم نهایی دامنه با ارائه‌دهنده است؛ تقاضای مشتری و الزام مقرراتی، محرک آن‌اند.</span>
         <a class="site" href="https://gcra.ir/audit/" target="_blank" rel="noopener">نسخهٔ آنلاین: <span class="ltr">https://gcra.ir/audit/</span></a>
-        <span>۲ / ۵</span>
+        <span>۳ / ۶</span>
       </footer>
     </div>
   </section>
 
   <!-- S3 -->
-  <section class="slide" id="s3" aria-label="اسلاید ۳: گواهینامه و attestation" aria-hidden="true">
+  <section class="slide" id="s3" aria-label="اسلاید ۴: گواهینامه و attestation" aria-hidden="true">
     <div class="slide-inner">
       <header class="s-head">
-        <div class="s-num">03 / 05</div>
+        <div class="s-num">04 / 06</div>
         <div class="kicker">سند نهایی</div>
         <h1>گواهینامه نیست؛ گزارش است</h1>
         <p class="lead">C5 یک کاتالوگ معیار است؛ خروجی، attestation یا اظهارنظر مستقل حسابرس است.</p>
@@ -458,16 +524,16 @@
       <footer class="s-foot">
         <span>نبودِ یک AS/AC در گزارش یعنی «ممیزی نشده»، نه «کنترل وجود ندارد».</span>
         <a class="site" href="https://gcra.ir/audit/" target="_blank" rel="noopener">نسخهٔ آنلاین: <span class="ltr">https://gcra.ir/audit/</span></a>
-        <span>۳ / ۵</span>
+        <span>۴ / ۶</span>
       </footer>
     </div>
   </section>
 
   <!-- S4 -->
-  <section class="slide" id="s4" aria-label="اسلاید ۴: نوع ۱ و نوع ۲" aria-hidden="true">
+  <section class="slide" id="s4" aria-label="اسلاید ۵: نوع ۱ و نوع ۲" aria-hidden="true">
     <div class="slide-inner">
       <header class="s-head">
-        <div class="s-num">04 / 05</div>
+        <div class="s-num">05 / 06</div>
         <div class="kicker">عمق حسابرسی</div>
         <h1>نوع ۱ یا نوع ۲؟</h1>
         <p class="lead">نوع ۱ عکس لحظه‌ای از طراحی است؛ نوع ۲ فیلم دورهٔ اجرا.</p>
@@ -506,16 +572,16 @@
       <footer class="s-foot">
         <span>برای اتکای عملیاتی، نوع ۲ با دامنهٔ منطبق ارزش بیشتری دارد.</span>
         <a class="site" href="https://gcra.ir/audit/" target="_blank" rel="noopener">نسخهٔ آنلاین: <span class="ltr">https://gcra.ir/audit/</span></a>
-        <span>۴ / ۵</span>
+        <span>۵ / ۶</span>
       </footer>
     </div>
   </section>
 
   <!-- S5 -->
-  <section class="slide" id="s5" aria-label="اسلاید ۵: چک‌لیست گزارش" aria-hidden="true">
+  <section class="slide" id="s5" aria-label="اسلاید ۶: چک‌لیست گزارش" aria-hidden="true">
     <div class="slide-inner">
       <header class="s-head">
-        <div class="s-num">05 / 05</div>
+        <div class="s-num">06 / 06</div>
         <div class="kicker">چک‌لیست</div>
         <h1>پنج سؤال قبل از اتکا به گزارش</h1>
         <p class="lead">گزارش C5 را مثل بروشور نخوانید؛ این پنج چیز را مشخص کنید.</p>
@@ -542,9 +608,9 @@
       <div class="bottom-note"><b>یادآوری:</b> C5 گواهینامه نیست؛ یک گزارش با دامنه، دوره و معیارهای مشخص است.</div>
 
       <footer class="s-foot">
-        <span>مکمل اسلایدهای مدیریتی سه‌گانه · C5:2026</span>
+        <span>مکمل مجموعهٔ مدیریتی · C5:2026</span>
         <a class="site" href="https://gcra.ir/audit/" target="_blank" rel="noopener">نسخهٔ آنلاین: <span class="ltr">https://gcra.ir/audit/</span></a>
-        <span>۵ / ۵</span>
+        <span>۶ / ۶</span>
       </footer>
     </div>
   </section>
@@ -553,7 +619,7 @@
 <nav class="hud" aria-label="کنترل اسلایدها">
   <button id="prev" type="button" aria-label="اسلاید قبلی" title="اسلاید قبلی (→)">→</button>
   <div class="dots" id="dots" role="group" aria-label="انتخاب اسلاید"></div>
-  <span class="count" id="count">۱ / ۵</span>
+  <span class="count" id="count">۱ / ۶</span>
   <button id="next" type="button" aria-label="اسلاید بعدی" title="اسلاید بعدی (←)">←</button>
   <div class="sep"></div>
   <button id="print" type="button" aria-label="چاپ یا ذخیره PDF" title="چاپ / PDF">
