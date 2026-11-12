@@ -1,676 +1,513 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>کتاب معماری مرجع ابر دولت ایران (GCRA) | دکتر مرتضی سرگلزایی جوان</title>
-<meta name="description" content="کتاب معماری مرجع ابر دولت ایران (GCRA) — چارچوبی جامع، مستقل از فناوری و مبتنی بر استانداردهای باز برای پیاده‌سازی ابر دولت هوشمند، امن و تاب‌آور.">
-<meta name="keywords" content="کتاب GCRA, معماری مرجع ابر دولت, ابر دولت ایران, CCRA, رایانش ابری, دولت دیجیتال, حکمرانی داده, Zero Trust">
-<meta property="og:title" content="معماری مرجع ابر دولت ایران (GCRA)">
-<meta property="og:description" content="چارچوبی جامع برای پیاده‌سازی ابر دولت هوشمند، امن و تاب‌آور.">
-<meta property="og:type" content="website">
-<meta property="og:locale" content="fa_IR">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="معماری مرجع ابر دولت ایران (GCRA)">
-<link rel="preconnect" href="https://cdn.jsdelivr.net">
-<link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>معماری مرجع ابر دولت GCRA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
-  --primary:#0B3D5C;--primary-dark:#072A40;--primary-light:#1A5A80;
-  --accent:#00A6A6;--accent-light:#E6F7F7;--gold:#C9A227;
-  --text:#1F2937;--text-muted:#4B5563;--bg:#FFFFFF;--bg-soft:#F7F9FB;
-  --border:#E5E7EB;--shadow:0 4px 20px rgba(11,61,92,.08);--shadow-lg:0 12px 40px rgba(11,61,92,.14);
-  --radius:14px;--radius-sm:8px;--transition:.35s cubic-bezier(.4,0,.2,1);
+  /* layout: sticky header with hash tabs; each view = working area + detail panel */
+  --bg:#f3f5f8; --surface:#ffffff; --surface2:#f7f9fb; --ink:#14263b; --muted:#5a6a7c; --line:#d9e1ea;
+  --accent:#1f3a5f; --on-accent:#ffffff;
+  --user:#2f6db5; --user-t:#e6eff9; --access:#0f7b82; --access-t:#e0f2f3;
+  --service:#2e7d4f; --service-t:#e3f3e9; --resource:#a56a14; --resource-t:#faefd9;
+  --slate:#4a5a78; --slate-t:#e9edf3; --warn:#a4543f; --warn-t:#fbeeea;
+  --font:"Vazirmatn","Segoe UI",Tahoma,sans-serif;
 }
-[data-theme="dark"]{
-  --primary:#5B9BD5;--primary-dark:#82B4E8;--primary-light:#3A7BBF;
-  --text:#E2E8F0;--text-muted:#94A3B8;--bg:#0F172A;--bg-soft:#1E293B;
-  --border:#334155;--accent-light:#0C4A6E;--shadow:0 4px 20px rgba(0,0,0,.3);--shadow-lg:0 12px 40px rgba(0,0,0,.4);
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  color-scheme:dark; --bg:#0d1722; --surface:#152232; --surface2:#1a2a3d; --ink:#e6edf5; --muted:#9fb0c3; --line:#2b3d52;
+  --accent:#8fb4e6; --on-accent:#0d1722;
+  --user:#6ea4e6; --user-t:#1b3050; --access:#4fc0c6; --access-t:#12383c; --service:#63c08a; --service-t:#173a28;
+  --resource:#e0a955; --resource-t:#3d2d12; --slate:#a4b3cf; --slate-t:#243248; --warn:#e79a86; --warn-t:#40231c;
+}}
+:root[data-theme="dark"]{
+  color-scheme:dark; --bg:#0d1722; --surface:#152232; --surface2:#1a2a3d; --ink:#e6edf5; --muted:#9fb0c3; --line:#2b3d52;
+  --accent:#8fb4e6; --on-accent:#0d1722;
+  --user:#6ea4e6; --user-t:#1b3050; --access:#4fc0c6; --access-t:#12383c; --service:#63c08a; --service-t:#173a28;
+  --resource:#e0a955; --resource-t:#3d2d12; --slate:#a4b3cf; --slate-t:#243248; --warn:#e79a86; --warn-t:#40231c;
 }
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;scroll-padding-top:80px}
-body{font-family:'Vazirmatn',Tahoma,sans-serif;font-size:16px;line-height:1.9;color:var(--text);background:var(--bg);overflow-x:hidden;transition:background .3s,color .3s}
-a{color:inherit;text-decoration:none;transition:var(--transition)}
-ul{list-style:none}
-.container{max-width:1180px;margin:0 auto;padding:0 24px}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--font);font-size:15px;line-height:1.8}
+.en{direction:ltr;unicode-bidi:isolate}
+button{font-family:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+header.top{position:sticky;top:0;z-index:10;background:var(--surface);border-bottom:1px solid var(--line)}
+.top-in{max-width:1220px;margin:0 auto;padding:10px 20px 0;display:flex;flex-direction:column;gap:8px}
+.brand{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+.brand h1{margin:0;font-size:20px;font-weight:800;text-wrap:balance}
+.brand span{color:var(--muted);font-size:13px}
+nav.tabs{display:flex;gap:4px;overflow-x:auto}
+nav.tabs a{flex:0 0 auto;padding:8px 13px;border-radius:9px 9px 0 0;text-decoration:none;color:var(--muted);font-weight:700;font-size:14px;border-bottom:3px solid transparent}
+nav.tabs a:hover{color:var(--ink);background:var(--surface2)}
+nav.tabs a[aria-current="page"]{color:var(--accent);border-bottom-color:var(--accent)}
+main{max-width:1220px;margin:0 auto;padding:20px 20px 60px}
+.view{display:none}.view.on{display:block}
+.view>h2{margin:0 0 2px;font-size:24px;font-weight:800;text-wrap:balance}
+.view>p.lead{margin:0 0 16px;color:var(--muted);max-width:70ch}
+.split{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:18px;align-items:start}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px}
+.detail{position:sticky;top:104px}
+.detail h3{margin:0 0 4px;font-size:18px}
+.detail .tag{display:inline-block;padding:1px 10px;border-radius:999px;font-size:12px;font-weight:700;background:var(--c-t,var(--slate-t));color:var(--c,var(--slate));margin-bottom:8px}
+.detail ul{margin:6px 0;padding-right:20px}
+.detail dl{margin:10px 0 0;display:grid;gap:8px}
+.detail dt{font-size:12px;font-weight:700;color:var(--muted)}
+.detail dd{margin:0}
+.note{margin-top:14px;padding:10px 14px;border-radius:10px;background:var(--surface2);border:1px solid var(--line);color:var(--muted);font-size:13.5px}
+.L-user{--c:var(--user);--c-t:var(--user-t)}.L-access{--c:var(--access);--c-t:var(--access-t)}
+.L-service{--c:var(--service);--c-t:var(--service-t)}.L-resource{--c:var(--resource);--c-t:var(--resource-t)}
+.L-gov{--c:var(--accent);--c-t:var(--slate-t)}.L-slate{--c:var(--slate);--c-t:var(--slate-t)}
+/* map */
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
+.toolbar input,.form select,.form input,.form textarea,.find{font:inherit;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:9px;padding:7px 12px}
+.toolbar input{flex:1;min-width:180px}
+.layers{display:flex;flex-direction:column}
+.layer{display:grid;grid-template-columns:128px minmax(0,1fr);gap:8px;background:var(--c-t);border:1px solid var(--c);border-radius:13px;padding:8px}
+.layer.dim{opacity:.4}
+.lname{border:0;border-radius:9px;background:var(--c);color:var(--surface);font-weight:800;font-size:15px;line-height:1.4;padding:8px}
+.lname small{display:block;font-weight:500;font-size:11px}
+.chips{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:9px;padding:8px;font-weight:700;font-size:13.5px;line-height:1.5;text-align:center}
+.chip:hover{border-color:var(--c,var(--accent))}
+.chip[aria-pressed="true"],.sel{border-color:var(--c,var(--accent));box-shadow:0 0 0 2px var(--c,var(--accent)) inset}
+.chip.miss{opacity:.3}
+.effect{grid-column:1/-1;font-size:13px;color:var(--ink);background:var(--surface);border-radius:8px;padding:5px 10px;border:1px dashed var(--c)}
+.itf{text-align:center;color:var(--muted);font-size:12.5px;padding:3px}
+.cross{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin-top:12px}
+.cross .chip{font-size:12.5px;padding:8px 4px}
+.cross-h{margin:14px 0 0;font-size:13px;font-weight:700;color:var(--muted)}
+/* lists */
+.rows{display:grid;gap:8px}
+.row{display:grid;grid-template-columns:42px minmax(0,1fr);gap:12px;align-items:center;text-align:right;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 14px;width:100%}
+.row .n{width:36px;height:36px;border-radius:10px;display:grid;place-items:center;background:var(--c,var(--accent));color:var(--surface);font-weight:800}
+.row b{display:block;font-size:15.5px}.row span{color:var(--muted);font-size:13.5px}
+.row:hover{border-color:var(--c,var(--accent))}
+/* topology */
+.pat{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.pat .chip{padding:6px 14px}
+.topo{display:grid;grid-template-columns:minmax(0,1fr) 190px;gap:16px;align-items:center}
+.trust{border:2px dashed var(--accent);border-radius:14px;padding:10px;display:grid;gap:7px;position:relative}
+.trust>em{font-style:normal;font-size:12px;font-weight:700;color:var(--accent)}
+.tl{display:grid;grid-template-columns:128px minmax(0,1fr);gap:8px;background:var(--c-t);border:1px solid var(--c);border-radius:11px;padding:6px;text-align:right;width:100%}
+.tl .lname{font-size:13.5px;display:grid;place-items:center;text-align:center}
+.tl .chips{grid-template-columns:repeat(var(--n,3),minmax(0,1fr))}
+.tl .chips span{background:var(--surface);border-radius:7px;padding:5px;text-align:center;font-size:12.5px;font-weight:700}
+.tl.off,.ext.off{opacity:.3}
+.fgw{border:0;border-radius:9px;background:var(--accent);color:var(--on-accent);font-weight:800;padding:8px;font-size:13.5px;width:100%}
+.ext{border:1px solid var(--slate);background:var(--slate-t);border-radius:12px;padding:12px;text-align:center;width:100%}
+.ext b{display:block;font-size:16px}.ext span{font-size:12.5px;color:var(--muted)}
+/* forms */
+.form{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
+.form label{display:grid;gap:4px;font-size:13px;font-weight:700;color:var(--muted)}
+.result{margin-top:14px;border-radius:14px;padding:16px;background:var(--c-t);border:1px solid var(--c)}
+.result h3{margin:0 0 4px;font-size:20px;color:var(--c)}
+.result ul{margin:6px 0 0;padding-right:20px}
+.phases{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:7px}
+.phases .chip{text-align:right;padding:8px 12px}
+.phases .chip small{display:block;color:var(--muted);font-weight:500}
+.done{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.done span{padding:4px 12px;border-radius:999px;background:var(--surface2);border:1px solid var(--line);font-size:13px;font-weight:700}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:right;vertical-align:top}
+th{color:var(--muted);font-size:12.5px}
+.tw{overflow-x:auto}
+.sl{display:grid;grid-template-columns:minmax(0,1fr) 54px;gap:4px 12px;align-items:center;margin-bottom:10px}
+.sl label{grid-column:1/-1;font-weight:700;font-size:14px}.sl label small{color:var(--muted);font-weight:500}
+.sl input{width:100%;accent-color:var(--accent)}.sl output{font-variant-numeric:tabular-nums;font-weight:800;text-align:left}
+.score{font-size:54px;font-weight:800;line-height:1.1;font-variant-numeric:tabular-nums;color:var(--accent)}
+.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;margin:10px 0}
+.steps span{height:10px;border-radius:5px;background:var(--line)}.steps span.on{background:var(--accent)}
+.ck{display:grid;gap:7px}
+.ck label{display:grid;grid-template-columns:22px minmax(0,1fr);gap:10px;align-items:start;background:var(--surface);border:1px solid var(--line);border-radius:11px;padding:10px 14px}
+.ck input{width:18px;height:18px;margin-top:5px;accent-color:var(--service)}
+.ck input:checked+span{color:var(--muted);text-decoration:line-through}
+.bar{height:12px;border-radius:6px;background:var(--line);overflow:hidden}.bar i{display:block;height:100%;background:var(--service);width:0}
+.btn{border:1px solid var(--line);background:var(--surface);border-radius:9px;padding:6px 14px;font-weight:700}
 
-/* ─── NAV ─── */
-.nav{position:fixed;top:0;right:0;left:0;z-index:1000;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-bottom:1px solid transparent;transition:var(--transition)}
-[data-theme="dark"] .nav{background:rgba(15,23,42,.92)}
-.nav.scrolled{border-bottom-color:var(--border);box-shadow:0 2px 16px rgba(0,0,0,.05)}
-.nav-inner{display:flex;align-items:center;justify-content:space-between;height:72px}
-.nav-brand{font-weight:800;font-size:.95rem;color:var(--primary);display:flex;align-items:center;gap:10px}
-.nav-brand .mark{width:40px;height:40px;border-radius:11px;background:linear-gradient(135deg,var(--primary),var(--accent));display:grid;place-items:center;color:#fff;font-size:.85rem;font-weight:800}
-.nav-brand .brand-text{display:flex;flex-direction:column;line-height:1.2}
-.nav-brand .brand-text small{font-size:.68rem;font-weight:500;color:var(--text-muted)}
-.nav-links{display:flex;gap:2px;align-items:center}
-.nav-links a{padding:8px 12px;border-radius:8px;font-size:.86rem;color:var(--text-muted);font-weight:500}
-.nav-links a:hover{color:var(--primary);background:var(--bg-soft)}
-.nav-toggle{display:none;background:none;border:none;cursor:pointer;width:44px;height:44px;border-radius:8px;color:var(--primary)}
-.nav-toggle svg{width:24px;height:24px;margin:auto}
-
-/* ─── BUTTONS ─── */
-.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 28px;border-radius:10px;font-weight:600;font-size:.95rem;cursor:pointer;border:2px solid transparent;transition:var(--transition);font-family:inherit}
-.btn-primary{background:var(--primary);color:#fff}
-.btn-primary:hover{background:var(--primary-dark);transform:translateY(-2px);box-shadow:var(--shadow-lg)}
-.btn-outline{background:transparent;color:var(--primary);border-color:var(--primary)}
-.btn-outline:hover{background:var(--primary);color:#fff;transform:translateY(-2px)}
-.btn-accent{background:var(--accent);color:#fff}
-.btn-accent:hover{background:#008F8F;transform:translateY(-2px);box-shadow:var(--shadow-lg)}
-.btn-lg{padding:16px 34px;font-size:1rem}
-.theme-btn{background:none;border:1px solid var(--border);width:36px;height:36px;border-radius:9px;cursor:pointer;color:var(--text);display:grid;place-items:center;transition:var(--transition);margin-right:6px}
-.theme-btn:hover{background:var(--accent-light);border-color:var(--accent);color:var(--primary)}
-.theme-btn svg{width:18px;height:18px}
-
-/* ─── HERO ─── */
-.hero{position:relative;padding:140px 0 90px;background:linear-gradient(160deg,#F0F6FA 0%,#FFFFFF 60%);overflow:hidden}
-[data-theme="dark"] .hero{background:linear-gradient(160deg,var(--bg-soft) 0%,var(--bg) 60%)}
-.hero::before{content:"";position:absolute;top:-120px;left:-120px;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(0,166,166,.12),transparent 70%)}
-.hero::after{content:"";position:absolute;bottom:-160px;right:-100px;width:480px;height:480px;border-radius:50%;background:radial-gradient(circle,rgba(11,61,92,.08),transparent 70%)}
-.hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1.15fr 1fr;gap:70px;align-items:center}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--border);padding:6px 16px;border-radius:100px;font-size:.82rem;color:var(--primary);font-weight:600;margin-bottom:22px;box-shadow:var(--shadow)}
-[data-theme="dark"] .hero-badge{background:var(--bg-soft)}
-.hero-badge .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.3)}}
-.hero h1{font-size:2.6rem;line-height:1.4;font-weight:800;color:var(--primary-dark);margin-bottom:14px}
-.hero h1 .highlight{background:linear-gradient(120deg,var(--accent) 0%,var(--primary-light) 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
-.hero-author{font-size:.95rem;color:var(--text-muted);margin-bottom:20px}
-.hero-author strong{color:var(--primary);font-weight:700}
-.hero-desc{font-size:.98rem;color:var(--text-muted);margin-bottom:32px;line-height:2.05;border-right:3px solid var(--accent);padding-right:16px}
-.hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:40px}
-.hero-highlights{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;padding-top:28px;border-top:1px solid var(--border)}
-.hero-highlight{display:flex;gap:12px;align-items:flex-start}
-.hero-highlight .h-icon{width:36px;height:36px;border-radius:9px;background:var(--accent-light);color:var(--primary);display:grid;place-items:center;flex-shrink:0}
-.hero-highlight .h-icon svg{width:18px;height:18px}
-.hero-highlight .h-text{font-size:.82rem;color:var(--text-muted);line-height:1.7}
-.hero-highlight .h-text strong{display:block;color:var(--primary-dark);font-size:.88rem;font-weight:700;margin-bottom:2px}
-
-/* ─── 3D BOOK ─── */
-.book-showcase{position:relative;display:flex;justify-content:center;align-items:center}
-.book-3d{
-  position:relative;width:280px;aspect-ratio:3/4.2;
-  background:linear-gradient(150deg,var(--primary) 0%,var(--primary-dark) 100%);
-  border-radius:8px 16px 16px 8px;
-  box-shadow:-20px 30px 60px rgba(11,61,92,.35),-8px 12px 30px rgba(11,61,92,.25),inset -4px 0 0 rgba(255,255,255,.06),inset 4px 0 0 rgba(0,0,0,.15);
-  padding:40px 32px;color:#fff;display:flex;flex-direction:column;justify-content:space-between;
-  transform:perspective(1400px) rotateY(-14deg) rotateX(4deg);
-  transition:transform .6s cubic-bezier(.4,0,.2,1);overflow:hidden;
-  animation:float 5s ease-in-out infinite;
-}
-.book-3d:hover{transform:perspective(1400px) rotateY(-6deg) rotateX(2deg) translateY(-6px)}
-.book-3d::before{content:"";position:absolute;top:0;right:0;width:16px;height:100%;background:linear-gradient(90deg,rgba(0,0,0,.3),transparent);border-radius:0 16px 16px 0}
-.book-3d::after{content:"";position:absolute;top:-40px;left:-40px;width:180px;height:180px;border-radius:50%;background:rgba(0,166,166,.22)}
-.book-3d .b-inner{position:relative;z-index:2}
-.book-3d .b-badge{display:inline-block;background:rgba(255,255,255,.16);padding:4px 12px;border-radius:100px;font-size:.7rem;margin-bottom:22px;backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.15)}
-.book-3d .b-title{font-size:1.55rem;font-weight:800;line-height:1.5;margin-bottom:14px}
-.book-3d .b-subtitle{font-size:.82rem;opacity:.8;line-height:1.8}
-.book-3d .b-author{position:relative;z-index:2;font-size:.85rem;opacity:.9;border-top:1px solid rgba(255,255,255,.15);padding-top:16px}
-.book-3d .b-author small{display:block;font-size:.7rem;opacity:.7;margin-bottom:4px}
-.book-shadow{position:absolute;bottom:-30px;left:50%;transform:translateX(-50%);width:70%;height:30px;border-radius:50%;background:rgba(11,61,92,.22);filter:blur(20px)}
-@keyframes float{0%,100%{transform:perspective(1400px) rotateY(-14deg) rotateX(4deg) translateY(0)}50%{transform:perspective(1400px) rotateY(-14deg) rotateX(4deg) translateY(-12px)}}
-
-/* ─── SECTIONS ─── */
-.section{padding:96px 0}
-.section-soft{background:var(--bg-soft)}
-.section-head{text-align:center;max-width:760px;margin:0 auto 56px}
-.section-eyebrow{display:inline-block;font-size:.82rem;font-weight:700;color:var(--accent);letter-spacing:1px;margin-bottom:12px;text-transform:uppercase}
-.section-title{font-size:2rem;font-weight:800;color:var(--primary-dark);line-height:1.5;margin-bottom:16px}
-.section-desc{font-size:1rem;color:var(--text-muted);line-height:2}
-
-/* ─── STATS ─── */
-.stats-bar{background:linear-gradient(135deg,var(--primary) 0%,var(--primary-dark) 100%);padding:48px 0;color:#fff;position:relative;overflow:hidden}
-.stats-bar::before{content:"";position:absolute;top:-50%;right:-10%;width:400px;height:400px;border-radius:50%;background:rgba(0,166,166,.15)}
-.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;position:relative;z-index:2}
-.stat-item{text-align:center}
-.stat-num{font-size:2.8rem;font-weight:800;line-height:1.2;margin-bottom:6px;background:linear-gradient(135deg,#fff,var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent}
-.stat-label{font-size:.88rem;opacity:.85;font-weight:500}
-
-/* ─── WHY CARDS ─── */
-.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
-.why-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:32px 28px;transition:var(--transition);position:relative;overflow:hidden}
-[data-theme="dark"] .why-card{background:var(--bg-soft)}
-.why-card::before{content:"";position:absolute;top:0;right:0;width:4px;height:0;background:var(--accent);transition:var(--transition)}
-.why-card:hover::before{height:100%}
-.why-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:var(--accent)}
-.why-icon{width:60px;height:60px;border-radius:16px;background:linear-gradient(135deg,var(--primary),var(--primary-light));color:#fff;display:grid;place-items:center;margin-bottom:22px}
-.why-icon svg{width:30px;height:30px}
-.why-card h4{font-size:1.1rem;font-weight:700;color:var(--primary-dark);margin-bottom:12px;line-height:1.6}
-.why-card p{font-size:.9rem;color:var(--text-muted);line-height:2}
-
-/* ─── TOC CARDS ─── */
-.toc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:20px}
-.toc-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:26px;transition:var(--transition);position:relative}
-[data-theme="dark"] .toc-card{background:var(--bg-soft)}
-.toc-card:hover{border-color:var(--accent);transform:translateY(-4px);box-shadow:var(--shadow-lg)}
-.toc-card .num{position:absolute;top:22px;left:24px;font-size:2.2rem;font-weight:800;color:var(--accent-light);line-height:1}
-.toc-card h4{font-size:1.05rem;font-weight:700;color:var(--primary-dark);margin-bottom:10px;padding-left:56px;line-height:1.6}
-.toc-card p{font-size:.86rem;color:var(--text-muted);line-height:1.95;margin-bottom:14px}
-.toc-card .chapters{font-size:.78rem;color:var(--text-muted);line-height:1.9;padding-top:12px;border-top:1px dashed var(--border)}
-.toc-card .chapters strong{color:var(--primary);font-weight:600}
-
-/* ─── PREVIEW ─── */
-.preview-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:center}
-.preview-visual{position:relative;background:linear-gradient(150deg,var(--bg-soft),#fff);border:1px solid var(--border);border-radius:var(--radius);padding:40px;min-height:400px;display:grid;place-items:center;overflow:hidden}
-[data-theme="dark"] .preview-visual{background:linear-gradient(150deg,var(--bg),var(--bg-soft))}
-.preview-visual::before{content:"";position:absolute;inset:0;background-image:radial-gradient(circle,rgba(0,166,166,.08) 1px,transparent 1px);background-size:20px 20px;opacity:.6}
-.preview-diagram svg{width:100%;height:auto;position:relative;z-index:2}
-.preview-info h3{font-size:1.5rem;font-weight:800;color:var(--primary-dark);margin-bottom:16px;line-height:1.6}
-.preview-info p{color:var(--text-muted);line-height:2.05;margin-bottom:18px;font-size:.95rem}
-.preview-list{display:grid;gap:12px;margin:24px 0}
-.preview-list li{display:flex;gap:12px;align-items:flex-start;font-size:.9rem;color:var(--text-muted);line-height:1.9}
-.preview-list .p-num{flex-shrink:0;width:26px;height:26px;border-radius:7px;background:var(--accent-light);color:var(--primary);display:grid;place-items:center;font-size:.78rem;font-weight:700}
-
-/* ─── AUDIENCE ─── */
-.audience-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
-.audience-card{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:32px 26px;text-align:center;transition:var(--transition)}
-[data-theme="dark"] .audience-card{background:var(--bg-soft)}
-.audience-card:hover{border-color:var(--accent);transform:translateY(-6px);box-shadow:var(--shadow-lg)}
-.audience-icon{width:64px;height:64px;border-radius:18px;background:linear-gradient(135deg,var(--primary),var(--accent));color:#fff;display:grid;place-items:center;margin:0 auto 20px}
-.audience-icon svg{width:32px;height:32px}
-.audience-card h4{font-size:1.05rem;font-weight:700;color:var(--primary-dark);margin-bottom:10px}
-.audience-card p{font-size:.87rem;color:var(--text-muted);line-height:1.95}
-
-/* ─── AUTHOR ─── */
-.author-box{display:grid;grid-template-columns:200px 1fr;gap:44px;align-items:center;background:linear-gradient(150deg,#fff,var(--accent-light));border:1px solid var(--border);border-radius:var(--radius);padding:44px;max-width:960px;margin:0 auto;box-shadow:var(--shadow)}
-[data-theme="dark"] .author-box{background:linear-gradient(150deg,var(--bg),var(--accent-light))}
-.author-avatar{width:180px;height:180px;border-radius:50%;background:linear-gradient(150deg,var(--primary),var(--accent));display:grid;place-items:center;color:#fff;box-shadow:var(--shadow-lg);position:relative;overflow:hidden}
-.author-avatar svg{width:90px;height:90px;opacity:.9}
-.author-avatar::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 70% 30%,rgba(255,255,255,.2),transparent 60%)}
-.author-details h3{font-size:1.5rem;font-weight:800;color:var(--primary-dark);margin-bottom:6px}
-.author-details .role{color:var(--accent);font-weight:600;font-size:.92rem;margin-bottom:18px}
-.author-details p{color:var(--text-muted);line-height:2.05;font-size:.93rem;margin-bottom:14px}
-.author-details .mini-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
-.author-details .mini-tags span{background:#fff;border:1px solid var(--border);padding:4px 12px;border-radius:100px;font-size:.76rem;color:var(--text-muted)}
-[data-theme="dark"] .author-details .mini-tags span{background:var(--bg-soft)}
-
-/* ─── FAQ ─── */
-.faq-list{max-width:820px;margin:0 auto;display:grid;gap:14px}
-.faq-item{background:#fff;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:var(--transition)}
-[data-theme="dark"] .faq-item{background:var(--bg-soft)}
-.faq-q{display:flex;align-items:center;justify-content:space-between;padding:20px 24px;cursor:pointer;font-weight:600;font-size:.95rem;color:var(--primary-dark);transition:var(--transition);gap:12px}
-.faq-q:hover{color:var(--accent)}
-.faq-q .faq-icon{width:28px;height:28px;border-radius:8px;background:var(--accent-light);color:var(--primary);display:grid;place-items:center;flex-shrink:0;transition:var(--transition)}
-.faq-q .faq-icon svg{width:14px;height:14px;transition:var(--transition)}
-.faq-item.open .faq-q .faq-icon{background:var(--accent);color:#fff;transform:rotate(180deg)}
-.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s ease;padding:0 24px}
-.faq-item.open .faq-a{max-height:300px;padding:0 24px 20px}
-.faq-a p{font-size:.9rem;color:var(--text-muted);line-height:2.1}
-
-/* ─── CTA ─── */
-.cta-box{position:relative;background:linear-gradient(150deg,var(--primary) 0%,var(--primary-dark) 100%);border-radius:20px;padding:64px 48px;color:#fff;text-align:center;overflow:hidden;box-shadow:var(--shadow-lg);max-width:900px;margin:0 auto}
-.cta-box::before{content:"";position:absolute;top:-80px;right:-80px;width:280px;height:280px;border-radius:50%;background:rgba(0,166,166,.2)}
-.cta-box::after{content:"";position:absolute;bottom:-100px;left:-100px;width:320px;height:320px;border-radius:50%;background:rgba(255,255,255,.05)}
-.cta-box-inner{position:relative;z-index:2;max-width:720px;margin:0 auto}
-.cta-box h3{font-size:1.8rem;font-weight:800;line-height:1.5;margin-bottom:16px}
-.cta-box p{font-size:1rem;opacity:.88;line-height:2;margin-bottom:32px}
-.cta-actions{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-.cta-actions .btn-primary{background:#fff;color:var(--primary)}
-.cta-actions .btn-primary:hover{background:var(--accent);color:#fff}
-.cta-actions .btn-outline{border-color:rgba(255,255,255,.4);color:#fff}
-.cta-actions .btn-outline:hover{background:#fff;color:var(--primary);border-color:#fff}
-
-/* ─── FOOTER ─── */
-.footer{background:var(--primary-dark);color:#fff;padding:56px 0 28px}
-.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;margin-bottom:40px}
-.footer h5{font-size:1rem;font-weight:700;margin-bottom:18px;color:#fff}
-.footer p,.footer a{font-size:.88rem;opacity:.75;line-height:2}
-.footer a:hover{opacity:1;color:var(--accent)}
-.footer ul li{margin-bottom:10px}
-.footer-bottom{padding-top:24px;border-top:1px solid rgba(255,255,255,.1);display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;font-size:.82rem;opacity:.65}
-
-/* ─── BACK TO TOP ─── */
-.btt{position:fixed;bottom:32px;left:32px;z-index:999;width:48px;height:48px;border-radius:14px;border:none;cursor:pointer;background:var(--primary);color:#fff;display:grid;place-items:center;box-shadow:0 4px 20px rgba(11,61,92,.3);opacity:0;visibility:hidden;transform:translateY(20px);transition:var(--transition)}
-.btt.show{opacity:1;visibility:visible;transform:translateY(0)}
-.btt:hover{background:var(--accent);transform:translateY(-3px);box-shadow:0 8px 30px rgba(0,166,166,.4)}
-.btt svg{width:22px;height:22px}
-
-/* ─── REVEAL ANIM ─── */
-.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
-.reveal.visible{opacity:1;transform:translateY(0)}
-
-/* ─── RESPONSIVE ─── */
-@media(max-width:1024px){
-  .hero-grid{grid-template-columns:1fr;gap:56px}
-  .book-showcase{order:-1;margin-bottom:20px}
-  .preview-grid{grid-template-columns:1fr;gap:40px}
-  .author-box{grid-template-columns:1fr;gap:32px;text-align:center;padding:36px 28px}
-  .author-avatar{width:150px;height:150px;margin:0 auto}
-  .footer-grid{grid-template-columns:1fr 1fr;gap:36px}
-}
-@media(max-width:768px){
-  .nav-links{position:fixed;top:72px;right:0;left:0;background:var(--bg);flex-direction:column;padding:16px 24px;border-bottom:1px solid var(--border);transform:translateY(-120%);transition:var(--transition);box-shadow:var(--shadow-lg)}
-  .nav-links.open{transform:translateY(0)}
-  .nav-links a{width:100%;padding:12px 16px}
-  .nav-toggle{display:grid}
-  .nav-brand .brand-text small{display:none}
-  .hero{padding:120px 0 70px}
-  .hero h1{font-size:1.8rem}
-  .hero-highlights{grid-template-columns:1fr}
-  .book-3d{width:240px}
-  .stats-grid{grid-template-columns:repeat(2,1fr);gap:24px}
-  .stat-num{font-size:2.2rem}
-  .section{padding:72px 0}
-  .section-title{font-size:1.6rem}
-  .cta-box{padding:48px 28px}
-  .cta-box h3{font-size:1.4rem}
-  .footer-grid{grid-template-columns:1fr;gap:32px}
-  .footer-bottom{flex-direction:column;text-align:center}
-  .btt{bottom:20px;left:20px;width:42px;height:42px}
-}
-@media(max-width:480px){
-  .container{padding:0 18px}
-  .hero h1{font-size:1.5rem}
-  .hero-actions{flex-direction:column}
-  .hero-actions .btn{width:100%;justify-content:center}
-  .btn{padding:11px 22px;font-size:.9rem}
-  .btn-lg{padding:13px 26px;font-size:.95rem}
-  .book-3d{width:200px;padding:28px 22px}
-  .book-3d .b-title{font-size:1.2rem}
-}
+.sub{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}.sub .chip{padding:6px 14px}
+.grid3{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.card h4{margin:0 0 4px;font-size:15px}.card p{margin:0;color:var(--muted);font-size:13.5px}
+.card .ref{display:inline-block;margin-top:6px;font-size:11.5px;font-weight:700;color:var(--accent)}
+h3.sec{margin:20px 0 6px;font-size:16.5px}
+.flow{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.flow span{padding:5px 12px;border-radius:9px;background:var(--surface);border:1px solid var(--line);font-weight:700;font-size:13.5px}
+.flow i{font-style:normal;color:var(--muted)}
+.cols3{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+.lg-row{display:grid;grid-template-columns:120px 170px minmax(0,1fr);gap:8px;background:var(--c-t);border:1px solid var(--c);border-radius:12px;padding:8px;align-items:center}
+.lg-row.dim{opacity:.35}
+.lg-row .dom{font-weight:800;color:var(--c);font-size:12.5px;text-align:center}
+.lg-row .chips{grid-template-columns:repeat(4,minmax(0,1fr))}
+.lg-row .chips span{background:var(--surface);border-radius:8px;padding:7px 5px;text-align:center;font-size:12.5px;font-weight:700;line-height:1.5}
+.tcols{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;margin:9px 0}
+.tcol{background:var(--c-t);border:1px solid var(--c);border-radius:12px;padding:8px;display:grid;gap:6px;align-content:start}
+.tcol h4{margin:0;padding:5px;border-radius:8px;background:var(--c);color:var(--surface);text-align:center;font-size:13.5px}
+.tband{display:grid;grid-template-columns:130px repeat(4,minmax(0,1fr));gap:7px;background:var(--c-t);border:1px solid var(--c);border-radius:12px;padding:8px}
+.tband b{display:grid;place-items:center;border-radius:8px;background:var(--c);color:var(--surface);font-size:13.5px;text-align:center}
+.form textarea{min-height:60px;resize:vertical}.form .wide{grid-column:1/-1}
+.badge{display:inline-block;padding:1px 10px;border-radius:999px;font-size:12px;font-weight:700;background:var(--c-t);color:var(--c)}
+.ok{--c:var(--service);--c-t:var(--service-t)}.bad{--c:var(--warn);--c-t:var(--warn-t)}
+.find{width:100%;border:1px solid var(--line);border-radius:9px;padding:7px 12px;background:var(--surface);color:var(--ink);margin-bottom:10px}
+dl.gl{margin:0;display:grid;gap:8px}
+dl.gl div{background:var(--surface);border:1px solid var(--line);border-radius:11px;padding:9px 14px}
+dl.gl dt{font-weight:800}dl.gl dd{margin:0;color:var(--muted);font-size:14px}
+@media (max-width:900px){.tcols{grid-template-columns:repeat(2,minmax(0,1fr))}.lg-row,.tband{grid-template-columns:minmax(0,1fr)}.lg-row .chips{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:900px){.split{grid-template-columns:minmax(0,1fr)}.detail{position:static}.topo{grid-template-columns:minmax(0,1fr)}
+  .cross{grid-template-columns:repeat(2,minmax(0,1fr))}.chips{grid-template-columns:repeat(2,minmax(0,1fr))}.layer,.tl{grid-template-columns:minmax(0,1fr)}}
+@media (prefers-reduced-motion:no-preference){.chip,.row,.layer,.tl{transition:opacity .15s,border-color .15s}}
 </style>
 </head>
 <body>
-
-<!-- NAV -->
-<nav class="nav" id="nav">
-  <div class="container nav-inner">
-    <a href="#hero" class="nav-brand">
-      <span class="mark">GC</span>
-      <span class="brand-text">معماری مرجع ابر دولت<small>دکتر مرتضی سرگلزایی جوان</small></span>
-    </a>
-    <button class="nav-toggle" id="navToggle" aria-label="منو">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-    </button>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#why">چرا این کتاب؟</a></li>
-      <li><a href="#structure">ساختار کتاب</a></li>
-      <li><a href="#preview">نگاهی به محتوا</a></li>
-      <li><a href="#audience">مخاطبان</a></li>
-      <li><a href="#author">نویسنده</a></li>
-      <li><a href="#faq">سوالات متداول</a></li>
-      <li><a href="read" class="btn btn-primary" style="padding:8px 18px;font-size:.82rem;margin-right:8px">📖 مطالعه کتاب</a></li>
-      <li>
-        <button class="theme-btn" id="themeBtn" aria-label="تغییر تم">
-          <svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-        </button>
-      </li>
-    </ul>
-  </div>
-</nav>
-
-<!-- HERO -->
-<header class="hero" id="hero">
-  <div class="container hero-grid">
-    <div class="hero-content">
-      <div class="hero-badge"><span class="dot"></span><span>منطبق با ماده ۸ آیین‌نامه اجرایی بند (الف) ماده (۱۰۷)</span></div>
-      <h1>معماری مرجع<br><span class="highlight">ابر دولت ایران</span></h1>
-      <p class="hero-author">نویسنده: <strong><a href="https://msjavan.ir" target="_blank" rel="noopener noreferrer" style="color:var(--primary)">دکتر مرتضی سرگلزایی جوان</a></strong></p>
-      <p class="hero-desc">GCRA چارچوبی جامع، مستقل از فناوری و مبتنی بر استانداردهای باز برای پیاده‌سازی ابر دولت هوشمند، امن، فدراسیونی و تاب‌آور است. این کتاب با حفظ ساختار چهارلایه‌ای CCRA و افزودن قابلیت‌های اختصاصی دولت，نقشه راه ملی استقرار ابر دولت را ترسیم می‌کند.</p>
-      <div class="hero-actions">
-        <a href="read" class="btn btn-accent btn-lg">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-          شروع مطالعه کتاب
-        </a>
-        <a href="./audit" class="btn btn-outline btn-lg">راهنمای حسابرسی با الگوی C5</a>
-        
-      </div>
-      <div class="hero-highlights">
-        <div class="hero-highlight">
-          <div class="h-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div>
-          <div class="h-text"><strong>۸ فصل تخصصی</strong>از مفاهیم پایه تا پیاده‌سازی و حکمرانی</div>
-        </div>
-        <div class="hero-highlight">
-          <div class="h-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
-          <div class="h-text"><strong>۷ پیوست کاربردی</strong>نقشه راه، ارزیابی، سناریوها و استانداردها</div>
-        </div>
-        <div class="hero-highlight">
-          <div class="h-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
-          <div class="h-text"><strong>مدل بلوغ پنج‌سطحی</strong>مسیر تکامل از ابتدایی تا تطبیق‌پذیر</div>
-        </div>
-        <div class="hero-highlight">
-          <div class="h-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
-          <div class="h-text"><strong>۴۸+ استاندارد مرجع</strong>ISO، ITU-T، NIST، CSA، DMTF و TM Forum</div>
-        </div>
-      </div>
-    </div>
-    <div class="book-showcase">
-      <div class="book-shadow"></div>
-      <div class="book-3d">
-        <div class="b-inner">
-          <span class="b-badge">معماری مرجع — نسخه ۱.۰</span>
-          <div class="b-title">معماری مرجع ابر دولت ایران</div>
-          <div class="b-subtitle">چارچوبی جامع برای پیاده‌سازی ابر دولت هوشمند، امن و تاب‌آور</div>
-        </div>
-        <div class="b-author"><small>نویسنده: دکتر مرتضی جوان</small></div>
-      </div>
-    </div>
-  </div>
-</header>
-
-<!-- STATS -->
-<section class="stats-bar">
-  <div class="container">
-    <div class="stats-grid">
-      <div class="stat-item reveal"><div class="stat-num" data-target="8">۰</div><div class="stat-label">فصل تخصصی</div></div>
-      <div class="stat-item reveal"><div class="stat-num" data-target="48">۰</div><div class="stat-label">استاندارد مرجع</div></div>
-      <div class="stat-item reveal"><div class="stat-num" data-target="12">۰</div><div class="stat-label">فاز پیاده‌سازی</div></div>
-      <div class="stat-item reveal"><div class="stat-num" data-target="7">۰</div><div class="stat-label">پیوست کاربردی</div></div>
-    </div>
-  </div>
+<header class="top"><div class="top-in">
+  <div class="brand"><h1>معماری مرجع ابر دولت ایران <span class="en">GCRA</span></h1><span>راهنمای تعاملی غیررسمی، بر پایهٔ متن کتاب</span></div>
+  <nav class="tabs" id="tabs" aria-label="بخش‌ها"></nav>
+</div></header>
+<main>
+<section class="view" id="v-map"><h2>نقشهٔ معماری کلان</h2><p class="lead">چهار لایهٔ CCRA حفظ شده و هشت قابلیت عرضی مثل برش عمودی از همهٔ لایه‌ها می‌گذرد (پیوست معماری کلان، شکل ۱۰۳). روی هر جزء بزنید.</p>
+  <div class="split"><div>
+    <div class="toolbar"><input id="q" type="search" placeholder="جست‌وجو در اجزا، مثلا API یا هویت" aria-label="جست‌وجو در اجزا"></div>
+    <div class="layers" id="layers"></div>
+    <p class="cross-h">قابلیت‌های عرضی (لایهٔ پنجم نیستند). یکی را انتخاب کنید تا اثرش در لایه‌ها دیده شود.</p>
+    <div class="cross" id="cross"></div>
+  </div><aside class="panel detail" id="d-map" aria-live="polite"></aside></div>
+</section>
+<section class="view" id="v-levels"><h2>سطوح معماری</h2><p class="lead">کتاب GCRA را در سه سطح مفهومی، منطقی و استقرار تعریف می‌کند و سپس مدل پیاده‌سازی را می‌آورد. نشانی هر سطح در کتاب این‌جاست.</p>
+  <div class="split"><div class="rows" id="levels"></div><aside class="panel detail" id="d-levels" aria-live="polite"></aside></div>
+</section>
+<section class="view" id="v-topology"><h2>توپولوژی و الگوهای استقرار</h2><p class="lead">ابر دولت یک مرکز داده نیست. پنج سطح درون مرز اعتماد قرار دارند و همهٔ ابرها از راه <span class="en">Federation Gateway</span> به هم وصل می‌شوند.</p>
+  <div class="split"><div>
+    <div class="pat" id="pat" role="group" aria-label="الگوی استقرار"></div>
+    <div class="topo"><div class="trust" id="trust"><em>مرز اعتماد ابر دولت</em></div>
+      <button class="ext" id="ext" type="button"><b>ابر بیرونی</b><span>عمومی، تجاری و انجمنی؛ خارج از مرز اعتماد</span></button></div>
+    <div class="note">پنج سطح و نقش هر کدام از بخش ۶۱ کتاب است. برجسته‌شدن سطح‌ها برای هر الگو نمایشی است.</div>
+    <h3 class="sec">جدول تصمیم‌های معماری (ADR، بخش ۶۴)</h3><div class="panel tw"><table><tr><th>شناسه</th><th>تصمیم</th><th>دلیل</th></tr><tr><td class="en">ADR-001</td><td>پشتیبانی از فدراسیون</td><td>محیط چندسازمانی</td></tr><tr><td class="en">ADR-002</td><td>توصیف هستهٔ ملی</td><td>ارائهٔ قابلیت‌های مشترک دولتی</td></tr><tr><td class="en">ADR-003</td><td>پذیرش ابر مرزی به‌عنوان الگوی استقرار</td><td>حفظ چهار لایهٔ CCRA</td></tr><tr><td class="en">ADR-004</td><td>پشتیبانی از ابرهای خارجی با کنترل مرزها</td><td>نیازمندی‌های ابر ترکیبی</td></tr><tr><td class="en">ADR-005</td><td>پشتیبانی از استقرار چندمنطقه‌ای</td><td>تاب‌آوری و مقیاس‌پذیری</td></tr></table></div>
+    <h3 class="sec">اجزای Landing Zone</h3><div class="flow"><span>Identity Integration</span><span>Network Baseline</span><span>Security Baseline</span><span>Logging</span><span>Monitoring</span><span>Policy</span><span>Resource Organization</span><span>Backup</span><span>Compliance Controls</span></div><p style="color:var(--muted);font-size:13.5px;margin:8px 0 0">Landing Zone الگوی استقرار و Guardrail است، نه لایه. قالب ثابت است و برای هر دستگاه فقط نام پروژه، محدودهٔ IP و تگ‌ها عوض می‌شود. هر تصمیم مهم استقرار با ADR ثبت می‌شود (بخش ۵۷ و ۶۲).</p>
+  </div><aside class="panel detail" id="d-topo" aria-live="polite"></aside></div>
+</section>
+<section class="view" id="v-placement"><h2>جانمایی بار کاری</h2><p class="lead">ویژگی‌های بار کاری را انتخاب کنید تا ناحیهٔ پیشنهادی از میان پنج ناحیهٔ GCRA را ببینید.</p>
+  <div class="panel"><div class="form" id="pf"></div><div id="pres"></div>
+  <div class="note">شش معیار و تعریف پنج ناحیه از بخش ۵۶ کتاب است. کتاب قاعدهٔ دقیق موتور سیاست جانمایی را نمی‌دهد؛ قاعدهٔ این صفحه نمونه‌ای است که از تعریف ناحیه‌ها ساخته شده.</div></div>
+</section>
+<section class="view" id="v-phases"><h2>مدل پیاده‌سازی</h2><p class="lead">اول معماری، بعد پیاده‌سازی. سیزده فاز تدریجی، هر کدام با خروجی قابل بهره‌برداری.</p>
+  <div class="split"><div><div class="phases" id="phases"></div>
+    <h3 style="margin:18px 0 0;font-size:16px">تعریف Done</h3><p style="margin:0;color:var(--muted)">نصب کافی نیست. کار وقتی تمام است که از هر شش پله گذشته باشد.</p>
+    <div class="done" id="done"></div>
+    <h3 style="margin:18px 0 6px;font-size:16px">نقشهٔ راه ملی (پیشنهادی کتاب)</h3>
+    <div class="panel tw"><table id="road"></table></div>
+  </div><aside class="panel detail" id="d-phase" aria-live="polite"></aside></div>
+</section>
+<section class="view" id="v-maturity"><h2>سنجش بلوغ</h2><p class="lead">برای هر زیرحوزه سطح فعلی را از جدول ۲۷ کتاب انتخاب کنید. مقادیر اولیه نمونه است.</p>
+  <div class="split"><div class="panel" id="msl"></div><aside class="panel detail" id="d-mat" aria-live="polite"></aside></div>
+</section>
+<section class="view" id="v-checklist"><h2>چک‌لیست بازبینی طرح</h2><p class="lead">یازده پرسش برای سنجش یک طرح یا پروژه با GCRA. وضعیت در همین مرورگر می‌ماند.</p>
+  <div class="panel" style="margin-bottom:12px"><div style="display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:8px"><b id="ckn"></b><button class="btn" id="ckr" type="button">پاک‌کردن همه</button></div><div class="bar"><i id="ckb"></i></div></div>
+  <div class="ck" id="ck"></div>
 </section>
 
-<!-- WHY -->
-<section class="section" id="why">
-  <div class="container">
-    <div class="section-head reveal"><span class="section-eyebrow">ضرورت و ارزش</span><h2 class="section-title">چرا این کتاب مهم است؟</h2><p class="section-desc">ابر دولت صرفاً «داشتن یک مرکز داده دولتی» نیست؛ یک زیست‌بوم فدراسیونی از منابع، خدمات，داده‌ها و سیاست‌هاست.</p></div>
-    <div class="why-grid">
-      <div class="why-card reveal">
-        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
-        <h4>پاسخ به الزام قانونی</h4><p>تدوین‌شده در پاسخ به بند (الف) ماده (۱۰۷) قانون برنامه هفتم پیشرفت و ماده ۸ آیین‌نامه اجرایی.</p>
-      </div>
-      <div class="why-card reveal">
-        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
-        <h4>حفظ استاندارد بین‌المللی</h4><p>حفظ معماری چهارلایه‌ای CCRA (کاربری，دسترسی، خدمت，منابع) به‌عنوان اسکلت اصلی و افزودن قابلیت‌های دولت.</p>
-      </div>
-      <div class="why-card reveal">
-        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-        <h4>امنیت و حاکمیت ملی</h4><p>ارائه قابلیت‌های امنیت مبتنی بر اعتماد صفر، حکمرانی داده، حاکمیت ملی در هفت بعد و تاب‌آوری چندمنطقه‌ای.</p>
-      </div>
-      <div class="why-card reveal">
-        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg></div>
-        <h4>نقشه راه اجرایی</h4><p>ارائه نقشه راه ملی چهارفازی، ۱۲ فاز پیاده‌سازی، کارخانه مهاجرت و مدل بلوغ پنج‌سطحی.</p>
-      </div>
-      <div class="why-card reveal">
-        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-        <h4>مستقل از فناوری</h4><p>معماری قابلیت‌ها و الگوها را تعریف می‌کند، نه محصول خاص. انتخاب فناوری به مرحله پیاده‌سازی واگذار می‌شود.</p>
-      </div>
-      <div class="why-card reveal">
-        <div class="why-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></div>
-        <h4>فدراسیون به‌جای تمرکز</h4><p>پشتیبانی از پنج الگوی استقرار با حفظ استقلال عملیاتی دستگاه‌ها و انسجام ملی.</p>
-      </div>
-    </div>
-  </div>
+<section class="view" id="v-principles"><h2>اصول و خطاهای رایج</h2><p class="lead">اصول بنیادین GCRA، اصول بومی‌سازی برای ایران و خطاهایی که باید از آن‌ها دوری کرد.</p>
+  <div class="sub" id="pr-sub" role="group" aria-label="گروه اصول"></div><div class="grid3" id="pr-grid"></div>
 </section>
-
-<!-- STRUCTURE -->
-<section class="section section-soft" id="structure">
-  <div class="container">
-    <div class="section-head reveal"><span class="section-eyebrow">ساختار</span><h2 class="section-title">فهرست مطالب کتاب</h2><p class="section-desc">هشت فصل تخصصی و هفت پیوست کاربردی، مسیر کاملی از مفاهیم پایه تا پیاده‌سازی و حکمرانی.</p></div>
-    <div class="toc-grid">
-      <a href="read#chapter-1" class="toc-card reveal"><span class="num">۰۱</span><h4>مسئله و مبانی</h4><p>تبیین ضرورت ابر دولت، تفاوت با ابر سازمانی و عمومی، مفاهیم پایه و اصول حاکم.</p><div class="chapters"><strong>سرفصل‌ها:</strong> مقدمه • مفهوم ابر دولت • ابر ملی • ابر حاکمیتی • فدراسیون</div></a>
-      <a href="read#chapter-2" class="toc-card reveal"><span class="num">۰۲</span><h4>معماری‌ها و استانداردها</h4><p>بررسی CCRA، استانداردهای ISO/IEC و ITU-T، چارچوب‌های NIST، CSA，DMTF و TM Forum.</p><div class="chapters"><strong>سرفصل‌ها:</strong> CCRA • NIST SP 500-292 • ISO/IEC 22123-3 • ITU-T Y.3502</div></a>
-      <a href="read#chapter-3" class="toc-card reveal"><span class="num">۰۳</span><h4>از CCRA به GCRA</h4><p>فرآیند هفت‌مرحله‌ای تبدیل معماری عمومی به معماری تخصصی ابر دولت.</p><div class="chapters"><strong>سرفصل‌ها:</strong> Preserve & Extend • مدل قابلیت • تحلیل دلتا • مدل هدف</div></a>
-      <a href="read#chapter-4" class="toc-card reveal"><span class="num">۰۴</span><h4>زمینه ملی و الزامات ایران</h4><p>پیشران‌های ملی، ساختار ذی‌نفعان، فدراسیون سازمان‌ها，حاکمیت داده و مدل اقتصادی.</p><div class="chapters"><strong>سرفصل‌ها:</strong> ۱۱ پیشران • ماتریس نیازمندی • تحلیل دلتا • بومی‌سازی</div></a>
-      <a href="read#chapter-5" class="toc-card reveal"><span class="num">۰۵</span><h4>طراحی معماری منطقی</h4><p>دامنه‌های منطقی، لایه‌های چهارگانه، خدمات منطقی، واسط‌ها و ماتریس ردیابی.</p><div class="chapters"><strong>سرفصل‌ها:</strong> دامنه داده • یکپارچه‌سازی • امنیت • OSS/BSS • حکمرانی</div></a>
-      <a href="read#chapter-6" class="toc-card reveal"><span class="num">۰۶</span><h4>مدل استقرار و توپولوژی</h4><p>پنج الگوی استقرار: متمرکز، فدراسیونی، ترکیبی، چندابری و مرزی. به همراه Landing Zone.</p><div class="chapters"><strong>سرفصل‌ها:</strong> هسته ملی • ابر منطقه‌ای • ابر دستگاهی • مرز اعتماد</div></a>
-      <a href="read#chapter-7" class="toc-card reveal"><span class="num">۰۷</span><h4>مدل پیاده‌سازی GCRA</h4><p>دوازده فاز اجرایی، جریان‌های کاری، KPIها، مدل بلوغ و کارخانه مهاجرت.</p><div class="chapters"><strong>سرفصل‌ها:</strong> LZ • Core Platform • Security • OSS • BSS • Federation</div></a>
-      <a href="read#chapter-8" class="toc-card reveal"><span class="num">۰۸</span><h4>حکمرانی، بلوغ و حسابرسی</h4><p>ساختار حکمرانی، فرآیندهای انطباق，مدیریت استثنا، ارزیابی بلوغ و ممیزی.</p><div class="chapters"><strong>سرفصل‌ها:</strong> شورای عالی • کمیته معماری • مدل بلوغ • چارچوب ارزیابی</div></a>
-    </div>
-    <div style="margin-top:32px" class="reveal">
-      <div class="toc-card" style="cursor:default;border-color:var(--accent);background:linear-gradient(135deg,#fff,var(--accent-light))">
-        <h4 style="padding-left:0;margin-bottom:16px">📎 پیوست‌های کتاب</h4>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;font-size:.88rem;color:var(--text-muted)">
-          <div>• معماری کلان ابر دولت ایران</div><div>• نقشه راه ملی</div>
-          <div>• ارزیابی آمادگی دستگاه‌های اجرایی</div><div>• سناریوهای اتصال به ابر دولت (۱۳ سناریو)</div>
-          <div>• راهنمای مرجع اتصال و انتقال</div><div>• نگاشت استانداردها به معماری مرجع</div>
-          <div>• شناسنامه استانداردهای رایانش ابری (۱۷ استاندارد)</div>
-        </div>
-      </div>
-    </div>
-  </div>
+<section class="view" id="v-method"><h2>روش تبدیل CCRA به GCRA</h2><p class="lead">هر جزء معماری باید از یک پیشران شروع شود و تا استاندارد قابل ردیابی باشد. از انتخاب محصول شروع نکنید.</p>
+  <div class="panel"><div class="flow" id="chain"></div><p style="margin:8px 0 0;color:var(--muted);font-size:13.5px">نمونه: پیشران حکمرانی داده، نیازمندی کنترل محل اقامت داده، قابلیت <span class="en">Residency Enforcement Engine</span>.</p></div>
+  <h3 class="sec">هفت مرحله</h3>
+  <div class="split"><div class="rows" id="steps7"></div><aside class="panel detail" id="d-step" aria-live="polite"></aside></div>
+  <h3 class="sec">چه چیزی حفظ، سفارشی یا جدید می‌شود</h3><div class="cols3" id="pcn"></div>
+  <h3 class="sec">آیا این قابلیت جای خود را در GCRA دارد؟</h3>
+  <div class="panel"><div class="ck" id="gt"></div><div id="gt-res" style="margin-top:10px"></div></div>
+  <h3 class="sec">یازده حوزهٔ تمایز GCRA از CCRA</h3><div class="flow" id="diff"></div>
 </section>
-
-<!-- PREVIEW -->
-<section class="section" id="preview">
-  <div class="container">
-    <div class="section-head reveal"><span class="section-eyebrow">نگاهی به محتوا</span><h2 class="section-title">آنچه در کتاب خواهید یافت</h2><p class="section-desc">نمونه‌ای از شکل‌ها، جداول و مدل‌های کلیدی که در کتاب ارائه شده است.</p></div>
-    <div class="preview-grid">
-      <div class="preview-visual reveal">
-        <div class="preview-diagram">
-          <svg viewBox="0 0 400 320" fill="none">
-            <rect x="40" y="20" width="320" height="50" rx="8" fill="var(--primary)" opacity="0.9"/>
-            <text x="200" y="50" text-anchor="middle" fill="#fff" font-family="Vazirmatn" font-size="13" font-weight="600">لایه کاربری (User Layer)</text>
-            <rect x="40" y="85" width="320" height="50" rx="8" fill="var(--primary-light)" opacity="0.9"/>
-            <text x="200" y="115" text-anchor="middle" fill="#fff" font-family="Vazirmatn" font-size="13" font-weight="600">لایه دسترسی (Access Layer)</text>
-            <rect x="40" y="150" width="320" height="50" rx="8" fill="var(--accent)" opacity="0.9"/>
-            <text x="200" y="180" text-anchor="middle" fill="#fff" font-family="Vazirmatn" font-size="13" font-weight="600">لایه خدمت (Service Layer)</text>
-            <rect x="40" y="215" width="320" height="50" rx="8" fill="var(--primary-dark)" opacity="0.9"/>
-            <text x="200" y="245" text-anchor="middle" fill="#fff" font-family="Vazirmatn" font-size="13" font-weight="600">لایه منابع (Resource Layer)</text>
-            <rect x="20" y="20" width="14" height="245" rx="4" fill="var(--gold)"/>
-            <text x="27" y="290" text-anchor="middle" fill="var(--text-muted)" font-family="Vazirmatn" font-size="10">عرضی</text>
-            <path d="M200 70 L200 85" stroke="var(--text-muted)" stroke-width="1.5" marker-end="url(#arr)"/>
-            <path d="M200 135 L200 150" stroke="var(--text-muted)" stroke-width="1.5" marker-end="url(#arr)"/>
-            <path d="M200 200 L200 215" stroke="var(--text-muted)" stroke-width="1.5" marker-end="url(#arr)"/>
-            <defs><marker id="arr" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="var(--text-muted)"/></marker></defs>
-          </svg>
-        </div>
-      </div>
-      <div class="preview-info reveal">
-        <h3>نمونه‌ای از محتوای کتاب</h3>
-        <p>کتاب GCRA مشتمل بر مدل‌ها، ماتریس‌ها، جداول و دیاگرام‌های متعددی است که هر یک نقش کلیدی در تبیین معماری ایفا می‌کنند.</p>
-        <ul class="preview-list">
-          <li><span class="p-num">۱</span><span><strong>مدل مفهومی GCRA:</strong> نمایش ساختار چهارلایه‌ای با قابلیت‌های عرضی</span></li>
-          <li><span class="p-num">۲</span><span><strong>ماتریس نگاشت نیازمندی به قابلیت:</strong> پیوند پیشران‌های ملی به قابلیت‌های معماری</span></li>
-          <li><span class="p-num">۳</span><span><strong>مدل تصمیم‌گیری جانمایی بارکاری:</strong> منطق انتخاب محل استقرار بر اساس معیارها</span></li>
-          <li><span class="p-num">۴</span><span><strong>نقشه سرویس منطقی:</strong> فهرست کامل خدمات ابر دولت به‌همراه شناسنامه</span></li>
-          <li><span class="p-num">۵</span><span><strong>مدل مرز اعتماد:</strong> تفکیک دامنه اعتماد داخلی و خارجی در ابر دولت</span></li>
-          <li><span class="p-num">۶</span><span><strong>کارخانه مهاجرت:</strong> مدل مقیاس‌پذیر انتقال بارهای کاری به ابر</span></li>
-          <li><span class="p-num">۷</span><span><strong>مدل بلوغ پنج‌سطحی:</strong> مسیر تکامل از ابتدایی تا ابر دولت تطبیق‌پذیر</span></li>
-          <li><span class="p-num">۸</span><span><strong>نقشه راه ملی:</strong> برنامه چهارفازی پنج‌ساله استقرار ابر دولت</span></li>
-        </ul>
-      </div>
-    </div>
-  </div>
+<section class="view" id="v-logical"><h2>نمای منطقی</h2><p class="lead">هر لایه یک دامنهٔ منطقی و چند خدمت منطقی دارد. یک دستهٔ واسط را انتخاب کنید تا ببینید کجا به کار می‌رود.</p>
+  <div class="split"><div>
+    <div class="sub" id="itf-sub" role="group" aria-label="دستهٔ واسط"></div>
+    <div class="layers" id="lg"></div>
+    <div class="note">نام خدمات منطقی نمونه است؛ فهرست رسمی در نقشهٔ سرویس منطقی GCRA می‌آید.</div>
+    <h3 class="sec">ماتریس معماری منطقی (الگوی جدول ۱۹)</h3><div class="panel tw"><table id="mx"></table></div>
+    <h3 class="sec">شناسنامهٔ هر خدمت منطقی</h3><div class="flow" id="svc-id"></div>
+    <h3 class="sec">دامنهٔ داده</h3><div class="panel"><p style="margin:0 0 8px">داده دارایی راهبردی و حوزهٔ حاکمیتی است و در همهٔ لایه‌ها جریان دارد. تبادل داده باید مستقل از اپلیکیشن باشد.</p><div class="flow" id="data-dom"></div></div>
+  </div><aside class="panel detail" id="d-lg" aria-live="polite"></aside></div>
 </section>
-
-<!-- AUDIENCE -->
-<section class="section section-soft" id="audience">
-  <div class="container">
-    <div class="section-head reveal"><span class="section-eyebrow">مخاطبان</span><h2 class="section-title">این کتاب برای چه کسانی است؟</h2><p class="section-desc">طیف متنوعی از ذی‌نفعان که در مسیر استقرار ابر دولت نقش ایفا می‌کنند.</p></div>
-    <div class="audience-grid">
-      <div class="audience-card reveal">
-        <div class="audience-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4"/></svg></div>
-        <h4>سیاست‌گذاران و تصمیم‌سازان</h4><p>مدیران ارشد و سیاست‌گذاران حوزه فناوری اطلاعات دولت که نیازمند درک کلان از معماری، حکمرانی و نقشه راه ابر دولت هستند.</p>
-      </div>
-      <div class="audience-card reveal">
-        <div class="audience-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
-        <h4>معماران سازمانی و فنی</h4><p>معماران ارشد که مسئول طراحی معماری‌های تفصیلی، نگاشت قابلیت‌ها و پیاده‌سازی الگوهای معماری در سطح ملی هستند.</p>
-      </div>
-      <div class="audience-card reveal">
-        <div class="audience-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
-        <h4>مجریان دستگاه‌های اجرایی</h4><p>مدیران فناوری اطلاعات و تیم‌های فنی در وزارتخانه‌ها و سازمان‌ها که مسئول اتصال، مهاجرت و بهره‌برداری از ابر دولت هستند.</p>
-      </div>
-      <div class="audience-card reveal">
-        <div class="audience-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2z"/><path d="M9.5 9.5a2.5 2.5 0 0 1 4.9.5c0 1.5-2.4 2-2.4 3.5"/><circle cx="12" cy="17" r="0.5" fill="currentColor"/></svg></div>
-        <h4>پژوهشگران و دانشگاهیان</h4><p>اعضای هیئت علمی، دانشجویان تحصیلات تکمیلی و پژوهشگران حوزه‌های رایانش ابری، معماری سازمانی و دولت دیجیتال.</p>
-      </div>
-      <div class="audience-card reveal">
-        <div class="audience-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-        <h4>مشاوران و شرکت‌های فناوری</h4><p>مشاوران و شرکت‌های ارائه‌دهنده راهکار که نیازمند درک دقیق از معماری مرجع برای طراحی راهکارهای انطباقی هستند.</p>
-      </div>
-      <div class="audience-card reveal">
-        <div class="audience-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
-        <h4>حسابرسان و ارزیابان</h4><p>تیم‌های حسابرسی و انطباق که بر اساس معماری مرجع، ارزیابی انطباق پروژه‌ها و سنجش بلوغ سازمان‌ها را انجام می‌دهند.</p>
-      </div>
-    </div>
-  </div>
+<section class="view" id="v-technical"><h2>نمای فنی مرجع</h2><p class="lead">اجزا دستهٔ فناوری‌اند، نه محصول. روی هر جزء بزنید تا ببینید در کدام فاز پیاده‌سازی وارد می‌شود.</p>
+  <div class="split"><div id="tech"></div><aside class="panel detail" id="d-tech" aria-live="polite"></aside></div>
+  <div class="note">این نما پیشنهادی است و در کتاب نیست؛ از فازهای پیاده‌سازی GCRA (فصل ۷) چیده شده. حالت Active-Active یا Active-Standby بر پایهٔ RTO و RPO تعیین می‌شود.</div>
 </section>
-
-<!-- AUTHOR -->
-<section class="section" id="author">
-  <div class="container">
-    <div class="section-head reveal"><span class="section-eyebrow">نویسنده</span><h2 class="section-title">درباره نویسنده کتاب</h2></div>
-    <div class="author-box reveal">
-      <div class="author-avatar">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-      </div>
-      <div class="author-details">
-        <h3>دکتر مرتضی سرگلزایی جوان</h3>
-        <div class="role">دارای دو مدرک دکترای تخصصی (PhD) مهندسی فناوری اطلاعات و DBA</div>
-        <p>با بیش از دو دهه تجربه در حوزه فناوری اطلاعات و معماری سازمانی، دکتر سرگلزایی جوان نقش کلیدی در تدوین معماری مرجع ابر دولت ایران داشته است. ایشان ضمن تدریس در سطوح عالی دانشگاهی، مشاور ارشد نهادهای دولتی و خصوصی در حوزه‌های معماری سازمانی، رایانش ابری و تحول دیجیتال بوده‌اند.</p>
-        <div style="margin-top:14px"><a href="https://msjavan.ir" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="padding:8px 20px;font-size:.84rem;display:inline-flex">🌐 وب‌سایت نویسنده — msjavan.ir</a></div>
-        <div class="mini-tags">
-          <span>معماری سازمانی</span><span>رایانش ابری</span><span>دولت دیجیتال</span><span>حکمرانی داده</span><span>امنیت سایبری</span><span>تحول دیجیتال</span>
-        </div>
-      </div>
-    </div>
-  </div>
+<section class="view" id="v-onboarding"><h2>اتصال و انتقال دستگاه اجرایی</h2><p class="lead">پنج مرحلهٔ اتصال، سنجش آمادگی در هشت حوزه، شش راهبرد مهاجرت و سیزده سناریوی اتصال؛ از پیوست‌های کتاب.</p>
+  <h3 class="sec" style="margin-top:0">پنج مرحله</h3>
+  <div class="split"><div class="rows" id="ob-steps"></div><aside class="panel detail" id="d-ob" aria-live="polite"></aside></div>
+  <h3 class="sec">سنجش آمادگی دستگاه (۲۰۰ امتیاز)</h3>
+  <div class="split"><div class="panel" id="rd"></div><aside class="panel detail" id="d-rd" aria-live="polite"></aside></div>
+  <h3 class="sec">شش راهبرد مهاجرت (6R)</h3><div class="grid3" id="r6"></div>
+  <h3 class="sec">سیزده سناریوی اتصال</h3><input class="find" id="sc-q" type="search" placeholder="جست‌وجو در سناریوها" aria-label="جست‌وجو در سناریوها">
+  <div class="panel tw"><table id="sc-t"></table></div>
+  <div class="note">سناریوها نردبان اجباری نیستند؛ هر دستگاه مسیر خودش را از میان آن‌ها می‌سازد. این جدول راهنمای معماری است، نه رتبه‌بندی.</div>
 </section>
-
-<!-- FAQ -->
-<section class="section section-soft" id="faq">
-  <div class="container">
-    <div class="section-head reveal"><span class="section-eyebrow">سوالات متداول</span><h2 class="section-title">پاسخ به پرسش‌های شما</h2></div>
-    <div class="faq-list">
-      <div class="faq-item reveal">
-        <div class="faq-q">معماری مرجع ابر دولت (GCRA) چیست و چه تفاوتی با CCRA دارد?<span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></span></div>
-        <div class="faq-a"><p>GCRA نسخه تخصصی‌شده CCRA (معماری مرجع رایانش ابری ISO/IEC 22123-3) برای محیط دولت ایران است. تفاوت اصلی در افزودن قابلیت‌های خاصی چون حاکمیت ملی، فدراسیون دستگاه‌ها，خدمات مشترک دولت，حکمرانی داده و امنیت ملی است که در CCRA وجود ندارند یا نیاز به تخصصی‌سازی دارند.</p></div>
-      </div>
-      <div class="faq-item reveal">
-        <div class="faq-q">این کتاب چگونه به قوانین برنامه هفتم پیشرفت ارتباط دارد?<span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></span></div>
-        <div class="faq-a"><p>کتاب مستقیماً در پاسخ به آیین‌نامه اجرایی بند (الف) ماده (۱۰۷) قانون برنامه هفتم پیشرفت تدوین شده است. ماده ۸ این آیین‌نامه پنج دستورالعمل کلیدی را خواستار است که GCRA نسخه اولیه مؤلفه‌های آن‌ها را تأمین می‌کند.</p></div>
-      </div>
-      <div class="faq-item reveal">
-        <div class="faq-q">آیا GCRA محدود به یک فناوری یا فروشنده خاص است?<span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></span></div>
-        <div class="faq-a"><p>خیر. یکی از اصول کلیدی GCRA تفکیک معماری از پیاده‌سازی است. این معماری قابلیت‌ها و الگوها را تعریف می‌کند و انتخاب فناوری (مانند Kubernetes، OpenStack یا سایر پلتفرم‌ها) به مرحله پیاده‌سازی واگذار می‌شود تا از وابستگی به فروشنده جلوگیری شود.</p></div>
-      </div>
-      <div class="faq-item reveal">
-        <div class="faq-q">نقشه راه ملی استقرار ابر دولت چگونه طراحی شده است?<span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></span></div>
-        <div class="faq-a"><p>نقشه راه در چهار فاز اصلی طراحی شده: فاز اول (پایه‌گذاری ۱۴۰۴-۱۴۰۵) شامل استقرار LZ و Core Platform، فاز دوم (قابلیت‌ها ۱۴۰۵-۱۴۰۶) شامل OSS، BSS و خدمات مشترک، فاز سوم (گسترش ۱۴۰۶-۱۴۰۸) شامل ورود ۸۰٪ دستگاه‌ها و مهاجرت سامانه‌ها، و فاز چهارم (تکامل ۱۴۰۸-۱۴۰۹) شامل خودکارسازی کامل و هوشمندسازی عملیات.</p></div>
-      </div>
-      <div class="faq-item reveal">
-        <div class="faq-q">مدل بلوغ پنج‌سطحی GCRA چگونه تعریف شده است?<span class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></span></div>
-        <div class="faq-a"><p>مدل بلوغ از سطح ۱ (Initial — ابرهای پراکنده و عملیات دستی) تا سطح ۵ (Adaptive — ابر دولت هوشمند با خودکارسازی هوشمند، نگهداری پیشگیرانه و جانمایی پویای بارکاری) تعریف شده است. هر سطح شامل معیارهای مشخص در حوزه‌های حکمرانی، زیرساخت، امنیت، یکپارچه‌سازی，عملیات و خدمات است.</p></div>
-      </div>
-    </div>
-  </div>
+<section class="view" id="v-governance"><h2>حکمرانی، انطباق و استثنا</h2><p class="lead">هر پروژه پیش از عملیاتی‌شدن بررسی معماری می‌شود. انحراف فقط با استثنای ثبت‌شده و زمان‌دار مجاز است.</p>
+  <h3 class="sec" style="margin-top:0">سه سطح حکمرانی</h3><div class="cols3" id="gov-lv"></div>
+  <div class="panel tw" style="margin-top:10px"><table id="gov-duty"></table></div>
+  <h3 class="sec">مسیر انطباق معماری</h3><div class="panel"><div class="flow" id="gov-flow"></div><p style="margin:8px 0 0;color:var(--muted);font-size:13.5px">مستندات لازم: شرح معماری، ماتریس ردیابی نیازمندی به مؤلفه‌ها، ارزیابی اثر بر امنیت، داده و عملیات، و برنامهٔ آزمون.</p></div>
+  <h3 class="sec">پیش‌نویس درخواست استثنا</h3>
+  <div class="panel"><div class="form" id="exf"></div><div id="ex-res" style="margin-top:12px"></div>
+    <div class="note">مقادیر اولیه نمونهٔ جدول ۲۶ کتاب است. مراحل (جدول ۲۵): ثبت درخواست پیش از پیاده‌سازی، بررسی اولیه در دبیرخانه (۱ هفته)، ارزیابی ریسک در زیرکمیتهٔ امنیت یا داده (۲ هفته)، تصمیم کمیتهٔ حکمرانی معماری (۱ هفته)، ثبت و پایش مستمر. این فرم چیزی ارسال نمی‌کند.</div></div>
+  <h3 class="sec">چهار نوع ارزیابی (جدول ۲۹)</h3><div class="panel tw"><table id="gov-eval"></table></div>
+  <h3 class="sec">دوره‌های ممیزی (جدول ۳۲)</h3><div class="panel tw"><table id="gov-audit"></table></div>
+  <h3 class="sec">بازیگران و نقش‌ها (جدول ۳۴)</h3><div class="panel tw"><table id="gov-actors"></table></div>
+  <h3 class="sec">ده دستهٔ معیار ارزیابی فناوری (جدول ۲۱)</h3><div class="grid3" id="tech-crit"></div>
 </section>
-
-<!-- CTA -->
-<section class="section" id="cta">
-  <div class="container">
-    <div class="cta-box reveal">
-      <div class="cta-box-inner">
-        <h3>آماده مطالعه معماری مرجع ابر دولت هستید؟</h3>
-        <p>کتاب GCRA به‌صورت تعاملی و با پوشش تمام فصل‌ها و پیوست‌ها در دسترس است. همین حالا مطالعه را آغاز کنید.</p>
-        <div class="cta-actions">
-          <a href="read" class="btn btn-primary btn-lg">📖 شروع مطالعه کتاب</a>
-          <a href="#structure" class="btn btn-outline btn-lg">مشاهده ساختار کتاب</a>
-        </div>
-      </div>
-    </div>
-  </div>
+<section class="view" id="v-kpi"><h2>شاخص‌های کلیدی</h2><p class="lead">هر ۴۸ شاخص پیشنهادی جدول ۲۲ کتاب در هشت حوزه. مقادیر پیشنهادی‌اند، نه الزام قانونی.</p>
+  <div class="sub" id="kpi-sub" role="group" aria-label="دستهٔ شاخص"></div><input class="find" id="kpi-q" type="search" placeholder="جست‌وجو در شاخص‌ها" aria-label="جست‌وجو در شاخص‌ها">
+  <div class="panel tw"><table id="kpi-t"></table></div>
 </section>
-
-<!-- FOOTER -->
-<footer class="footer">
-  <div class="container">
-    <div class="footer-grid">
-      <div>
-        <h5>معماری مرجع ابر دولت ایران</h5>
-        <p>GCRA چارچوبی جامع، مستقل از فناوری و مبتنی بر استانداردهای باز برای پیاده‌سازی ابر دولت هوشمند، امن، فدراسیونی و تاب‌آور در ایران است.</p>
-      </div>
-      <div>
-        <h5>دسترسی سریع</h5>
-        <ul>
-          <li><a href="read">📖 مطالعه کتاب</a></li>
-          <li><a href="#structure">📋 ساختار کتاب</a></li>
-          <li><a href="#faq">❓ سوالات متداول</a></li>
-          <li><a href="#author">✍️ درباره نویسنده</a></li>
-          <li><a href="https://msjavan.ir" target="_blank" rel="noopener noreferrer">🌐 وب‌سایت نویسنده</a></li>
-        </ul>
-      </div>
-      <div>
-        <h5>ارجاعات</h5>
-        <ul>
-          <li><a href="https://msjavan.ir" target="_blank" rel="noopener noreferrer">✍️ وب‌سایت نویسنده</a></li>
-          <li><a href="https://www.iso.org" target="_blank">ISO/IEC Standards</a></li>
-          <li><a href="https://www.itu.int" target="_blank">ITU-T Recommendations</a></li>
-          <li><a href="https://csrc.nist.gov" target="_blank">NIST Publications</a></li>
-          <li><a href="https://cloudsecurityalliance.org" target="_blank">Cloud Security Alliance</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>© ۱۴۰۵ — معماری مرجع ابر دولت ایران (GCRA) — دکتر مرتضی سرگلزایی جوان</span>
-      <span>منطبق با ماده ۸ آیین‌نامه اجرایی بند (الف) ماده (۱۰۷) قانون برنامه هفتم پیشرفت</span>
-    </div>
-  </div>
-</footer>
-
-<!-- BACK TO TOP -->
-<button class="btt" id="btt" aria-label="بازگشت به بالا">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
-</button>
-
+<section class="view" id="v-glossary"><h2>واژه‌نامه</h2><p class="lead">اصطلاح‌های پرکاربرد GCRA با توضیح کوتاه.</p>
+  <input class="find" id="gl-q" type="search" placeholder="جست‌وجوی واژه" aria-label="جست‌وجوی واژه"><dl class="gl" id="gl"></dl>
+</section>
+</main>
 <script>
-// ─── THEME ───
 (function(){
-  const btn=document.getElementById('themeBtn');
-  const icon=document.getElementById('themeIcon');
-  const saved=localStorage.getItem('gcra-theme');
-  function setTheme(dark){
-    document.documentElement.setAttribute('data-theme',dark?'dark':'light');
-    localStorage.setItem('gcra-theme',dark?'dark':'light');
-    icon.innerHTML=dark
-      ?'<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>'
-      :'<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
-  }
-  setTheme(saved==='dark'||(!saved&&window.matchMedia('(prefers-color-scheme:dark)').matches));
-  btn.addEventListener('click',()=>setTheme(document.documentElement.getAttribute('data-theme')!=='dark'));
+var $=function(id){return document.getElementById(id)};
+var fa=function(n){return String(n).replace(/\d/g,function(d){return '۰۱۲۳۴۵۶۷۸۹'[d]})};
+var esc=function(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;')};
+var ul=function(a){return '<ul>'+a.map(function(x){return '<li>'+esc(x)+'</li>'}).join('')+'</ul>'};
+var VIEWS=[['map','نقشهٔ معماری'],['principles','اصول'],['method','روش'],['levels','سطوح معماری'],['logical','نمای منطقی'],['topology','توپولوژی'],['technical','نمای فنی'],['placement','جانمایی بار کاری'],['phases','پیاده‌سازی'],['onboarding','اتصال دستگاه'],['governance','حکمرانی'],['kpi','شاخص‌ها'],['maturity','بلوغ'],['checklist','چک‌لیست'],['glossary','واژه‌نامه']];
+$('tabs').innerHTML=VIEWS.map(function(v){return '<a href="#'+v[0]+'" data-v="'+v[0]+'">'+v[1]+'</a>'}).join('');
+function route(){var h=(location.hash||'').slice(1);if(!VIEWS.some(function(v){return v[0]===h}))h='map';
+  VIEWS.forEach(function(v){$('v-'+v[0]).classList.toggle('on',v[0]===h)});
+  [].forEach.call($('tabs').children,function(a){if(a.dataset.v===h)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});window.scrollTo(0,0);}
+window.addEventListener('hashchange',route);route();
+
+/* ---------- map ---------- */
+var LAYERS=[
+{k:'user',fa:'لایهٔ کاربری',en:'User',dom:'Government User & Identity',sec:'۲۸',desc:'نقطهٔ تعامل همهٔ بازیگران زیست‌بوم با ابر دولت.',caps:'مدیریت هویت دیجیتال، فدراسیون هویت، مدیریت نقش‌ها و دسترسی‌ها، مدیریت قراردادهای خدمت (SLA) و مدیریت روابط بین‌سازمانی.',itf:'با لایهٔ دسترسی از راه UI و API.',down:'واسط: UI و API',
+ c:[['شهروند',['مصرف‌کنندهٔ نهایی خدمات عمومی','بخش ۱۵.۱']],['کسب‌وکار',['مصرف‌کنندهٔ خدمات و ارائه‌دهندهٔ خدمات به دولت','بخش ۱۵.۱']],['کارمند دولت',['کاربر داخلی سامانه‌های دولتی','بخش ۱۵.۱']],['دستگاه اجرایی',['مصرف‌کننده و تولیدکنندهٔ خدمات، مالک داده','بخش ۱۵.۱']],['سامانه',['تعامل ماشین با ماشین و سرویس با سرویس','بخش ۱۵.۱']],['عامل هوش مصنوعی',['تعامل خودکار با سرویس‌ها و داده‌ها','بخش ۱۵.۱']],['نهاد ناظر',['سیاست‌گذاری، نظارت و تأیید انطباق','بخش ۱۵.۲']],['فراهم‌کنندهٔ ابر',['ارائهٔ زیرساخت و خدمات ابری','بخش ۱۵.۳']],['اپراتور ابر',['عملیات و بهره‌برداری از محیط ابری','بخش ۱۵.۳']]]},
+{k:'access',fa:'لایهٔ دسترسی',en:'Access',dom:'Access & Connectivity',sec:'۲۹',desc:'مسیر امن، استاندارد و قابل کنترل برای دسترسی بازیگران و سرویس‌ها به ابر دولت.',caps:'API Gateway، فدراسیون هویت، دروازهٔ فدراسیون، امنیت لایهٔ شبکه و مدیریت اتصالات.',itf:'از بالا UI و API. از پایین واسط‌های API، Service و Event به لایهٔ خدمت.',down:'واسط: API، Service و Event',
+ c:[['اتصال شبکه (Network Access)',['اتصال امن و پرسرعت میان دستگاه‌ها و ابر دولت','بخش ۳۱.۴ و ۵۵']],['دسترسی API',['مدیریت، امنیت و چرخهٔ حیات APIها','بخش ۲۹.۳ و ۳۳']],['دسترسی هویت',['احراز هویت و مجوزدهی بر پایهٔ فدراسیون هویت ملی','بخش ۲۸.۲']],['دسترسی سرویس',['کشف و دسترسی به سرویس‌های ابری','بخش ۲۹.۱']],['دسترسی لبه (Edge)',['پردازش نزدیک به کاربر یا منبع داده','Edge لایه یا دامنهٔ مستقل نیست','بخش ۲۹.۲']],['اتصال بین‌ابری',['اتصال میان ابرهای دستگاهی، منطقه‌ای و خارجی','بخش ۸۰']]]},
+{k:'service',fa:'لایهٔ خدمت',en:'Service',dom:'Cloud Services',sec:'۳۰',desc:'ارائهٔ خدمات ابری و خدمات مشترک دولت به مصرف‌کنندگان.',caps:'مدل‌های خدمت CCRA حفظ می‌شود و خدمات مشترک دولت تقویت می‌شود.',itf:'از بالا API، Service و Event. از پایین واسط‌های Management و Data به لایهٔ منبع. رویکرد API-First.',down:'واسط: Management و Data',
+ c:[['IaaS',['منابع محاسباتی، ذخیره‌سازی و شبکه','بخش ۳.۷']],['PaaS',['محیط اجرا و ابزارهای توسعه','بخش ۳.۷']],['SaaS',['برنامه‌های کاربردی آماده','بخش ۳.۷']],['خدمات مشترک دولت',['خدمت هویت: احراز هویت و مجوزدهی متمرکز','خدمت پیام‌رسانی: ارتباط استاندارد میان سامانه‌ها','خدمت اعلان: ارسال اعلان به شهروندان و کسب‌وکارها','خدمت تبادل داده: تبادل استاندارد و امن میان دستگاه‌ها','خدمت GIS: نقشه و خدمات مکانی','خدمت هوش مصنوعی: مدل‌ها و سرویس‌های AI','بخش ۳۰.۲ و ۷۷']],['خدمات هوش مصنوعی',['زیرساخت، سکو، مدل‌ها و خدمات هوش مصنوعی','بخش ۳۰.۴']]]},
+{k:'resource',fa:'لایهٔ منبع',en:'Resource',dom:'Resource & Infrastructure / Data',sec:'۳۱',desc:'تأمین منابع فیزیکی و مجازی برای ارائهٔ خدمات.',caps:'جداسازی منابع، تاب‌آوری، مدیریت ظرفیت، محل اقامت داده، حاکمیت ملی، استقرار چندسایته، بهره‌وری انرژی و امنیت زیرساخت.',itf:'از بالا واسط‌های Management و Data برای لایهٔ خدمت.',down:null,
+ c:[['محاسبات',['سرور فیزیکی، ماشین مجازی، کانتینر، شتاب‌دهنده‌های GPU و HPC','بخش ۳۱.۲']],['ذخیره‌سازی',['بلوکی، آبجکتی و فایلی؛ پشتیبان‌گیری و بایگانی','بخش ۳۱.۳']],['شبکه',['شبکهٔ مجازی، مسیریابی، تعادل بار، قطعه‌بندی و اتصال بین‌ابری','بخش ۳۱.۴']],['زیرساخت داده',['پایگاه داده، دریاچهٔ داده، انبار داده و سکوی داده','بخش ۳۲']],['زیرساخت کانتینر',['محیط اجرای کانتینر، orchestration و مدیریت کلاستر','بخش ۳۱.۵']]]}];
+var ALL='طبقه‌بندی، مالکیت و محل اقامت داده';
+var CROSS=[
+{k:'sec',fa:'امنیت و اعتماد',ref:'بخش ۱۸ و ۳۶',items:['IAM: احراز هویت، مجوزدهی، هویت ماشین و سرویس، فدراسیون هویت','اعتماد صفر: اعتبارسنجی مستمر، ارزیابی زمینه، کمترین دسترسی','امنیت داده: رمزنگاری در ذخیره و انتقال، مدیریت کلید و اسرار، DLP','امنیت شبکه و برنامه: فایروال، IPS، امنیت API، DevSecOps، امنیت کانتینر','پایش و واکنش: SIEM، SOC، مدیریت تهدید، مانور امنیتی'],eff:{user:'IAM و Zero Trust',access:'Zero Trust و امنیت API',resource:'امنیت زیرساخت'}},
+{k:'gov',fa:'حکمرانی و ریسک',ref:'بخش ۳۷ و ۸۲',items:['حکمرانی معماری: نگهداری GCRA، تأیید انطباق، مدیریت استثنا','حکمرانی ابر: سیاست‌گذاری، کاتالوگ خدمت، قراردادها','مدیریت ریسک امنیتی، عملیاتی و حاکمیتی','انطباق و ممیزی: ممیزی دوره‌ای و صدور گواهینامه','مدیریت سیاست: سلسله‌مراتب ملی، سازمانی، خدمت؛ Policy as Code'],eff:{user:'سیاست نقش‌ها و ممیزی'}},
+{k:'data',fa:'حکمرانی داده',ref:'بخش ۱۷ و ۳۲',items:['طبقه‌بندی داده: عمومی، داخلی، محرمانه، حیاتی','حکمرانی داده: مالکیت، کیفیت، چرخهٔ حیات، ممیزی، حریم خصوصی','سکوی داده: ذخیره‌سازی، کاتالوگ، متادیتا','تبادل داده: استاندارد، امن و مستقل از اپلیکیشن','حاکمیت ملی داده: کنترل محل اقامت، پردازش و مالکیت'],eff:{user:ALL,access:ALL,service:ALL,resource:ALL}},
+{k:'int',fa:'یکپارچه‌سازی',ref:'بخش ۳۳ و ۷۵',items:['مدیریت API: Gateway، ثبت، امنیت و چرخهٔ حیات','تبادل داده: مستقل از اپلیکیشن، تبدیل فرمت، اعتبارسنجی','یکپارچه‌سازی رویداد: Event Bus، Message Broker','فدراسیون هویت، سرویس، داده و سیاست','دروازهٔ فدراسیون: نقطهٔ کنترل امن اتصال میان ابرها'],eff:{access:'سکوی تبادل داده'}},
+{k:'oss',fa:'OSS',ref:'بخش ۳۴ و ۷۳',items:['مشاهده‌پذیری: متریک، لاگ، تریس، رویداد','مدیریت عملیات: حادثه، مشکل، تغییر، پیکربندی، ظرفیت، دسترس‌پذیری','اتوماسیون: IaC، Policy as Code، Security as Code، CI/CD','تضمین کیفیت سرویس: SLA، دسترس‌پذیری، عملکرد، انطباق عملیاتی'],eff:{access:'پایش ترافیک و لاگ دسترسی',service:'تضمین کیفیت خدمت',resource:'ظرفیت و پیکربندی'}},
+{k:'bss',fa:'BSS',ref:'بخش ۲۰ و ۳۵',items:['کاتالوگ خدمت','مدیریت SLA: تعریف، پایش و گزارش','اندازه‌گیری مصرف منابع و خدمات','FinOps: شفافیت و تخصیص هزینه، Showback، Chargeback','مدیریت قرارداد، تعرفه و صورتحساب'],eff:{user:'کاتالوگ و قرارداد خدمت',service:'کاتالوگ، SLA و Metering'}},
+{k:'dev',fa:'پشتیبانی از توسعه',ref:'بخش ۳۸ و ۷۶',items:['سکوی توسعه‌دهنده: پورتال، مخزن کد، CI/CD، مخزن آرتیفکت','DevSecOps: تست‌های امنیتی خودکار در چرخهٔ توسعه','IaC: تعریف زیرساخت به‌صورت کد','سکوی مهندسی دولت: سکوی مشترک توسعه و استقرار'],eff:{service:'CI/CD و DevSecOps'}},
+{k:'sov',fa:'حاکمیت ملی و تاب‌آوری',ref:'بخش ۱۹، ۳۹ و ۸۱',items:['حاکمیت ملی دیجیتال: داده، عملیات، فناوری، زنجیرهٔ تأمین، رمزنگاری','تاب‌آوری: بازیابی سانحه، تداوم کسب‌وکار، چندسایته، Failover','استقرار چندمنطقه‌ای: Active-Active، Active-Standby، RTO و RPO','مدیریت بحران و بازیابی سایبری'],eff:{resource:'HA، DR و چندسایتی'}}];
+var selCross=null,selChip=null;
+function drawMap(){
+  $('layers').innerHTML=LAYERS.map(function(L,i){
+    var e=selCross&&selCross.eff[L.k];
+    return '<div class="layer L-'+L.k+(selCross&&!e?' dim':'')+'"><button type="button" class="lname" data-l="'+i+'">'+L.fa+'<small class="en">'+L.en+'</small></button><div class="chips">'+
+      L.c.map(function(c,j){return '<button type="button" class="chip" data-l="'+i+'" data-c="'+j+'" aria-pressed="'+(selChip===i+'-'+j)+'">'+esc(c[0])+'</button>'}).join('')+
+      (e?'<div class="effect"><b>'+selCross.fa+' در این لایه:</b> '+esc(e)+'</div>':'')+'</div></div>'+(L.down?'<div class="itf">↕ '+L.down+'</div>':'');
+  }).join('');
+  $('cross').innerHTML=CROSS.map(function(c,i){return '<button type="button" class="chip" data-x="'+i+'" aria-pressed="'+(selCross===c)+'">'+c.fa+'</button>'}).join('');
+  filter();
+}
+function filter(){var q=$('q').value.trim().toLowerCase();
+  [].forEach.call(document.querySelectorAll('#layers .chip'),function(b){var c=LAYERS[b.dataset.l].c[b.dataset.c];
+    var hit=!q||(c[0]+' '+c[1].join(' ')).toLowerCase().indexOf(q)>=0;b.classList.toggle('miss',!hit)});}
+function showLayer(i){var L=LAYERS[i];$('d-map').className='panel detail L-'+L.k;
+  $('d-map').innerHTML='<span class="tag">بخش '+L.sec+' کتاب</span><h3>'+L.fa+' <span class="en">('+L.en+')</span></h3><p>'+L.desc+'</p><dl><dt>دامنهٔ منطقی</dt><dd class="en" style="text-align:right">'+L.dom+'</dd><dt>قابلیت‌ها و الزامات کلیدی</dt><dd>'+L.caps+'</dd><dt>واسط با لایه‌های مجاور</dt><dd>'+L.itf+'</dd><dt>قابلیت‌های عرضی اثرگذار</dt><dd>'+CROSS.filter(function(c){return c.eff[L.k]}).map(function(c){return c.fa+' ('+c.eff[L.k]+')'}).join('، ')+'</dd></dl>';}
+function showChip(i,j){var L=LAYERS[i],c=L.c[j];$('d-map').className='panel detail L-'+L.k;
+  $('d-map').innerHTML='<span class="tag">'+L.fa+'</span><h3>'+esc(c[0])+'</h3>'+ul(c[1]);}
+function showCross(c){$('d-map').className='panel detail L-gov';
+  $('d-map').innerHTML='<span class="tag">قابلیت عرضی · '+c.ref+'</span><h3>'+c.fa+'</h3>'+ul(c.items)+'<dl><dt>اثر در لایه‌ها (از اسلایدهای لایه‌ها)</dt><dd>'+LAYERS.filter(function(L){return c.eff[L.k]}).map(function(L){return L.fa+': '+c.eff[L.k]}).join('<br>')+'</dd></dl>';}
+$('layers').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;
+  if(b.dataset.c!==undefined){selChip=b.dataset.l+'-'+b.dataset.c;drawMap();showChip(+b.dataset.l,+b.dataset.c)}else{selChip=null;drawMap();showLayer(+b.dataset.l)}});
+$('cross').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;var c=CROSS[b.dataset.x];
+  selCross=selCross===c?null:c;selChip=null;drawMap();if(selCross)showCross(c);else showLayer(0)});
+$('q').addEventListener('input',filter);
+drawMap();showLayer(0);
+
+/* ---------- levels ---------- */
+var LEVELS=[
+['user','نمای زیست‌بوم','Ecosystem','چه بازیگران و چه ابرهایی هستند و چه نسبتی با هم دارند؟','اجزای تشکیل‌دهندهٔ ابر دولت و زیست‌بوم آن؛ زمینهٔ بحث پیش از معماری.','فصل اول، شکل ۱ و ۲','زمینه',null],
+['access','معماری مفهومی','Conceptual','پس از افزودن توسعه‌های دولت به CCRA، GCRA چه شکلی دارد؟','هستهٔ مفهومی GCRA. عنوان بخش در کتاب «معماری مفهومی» و عنوان شکل‌ها «مدل مفهومی GCRA» است؛ کتاب این دو را برای یک چیز به کار می‌برد.','بخش ۱۱.۱، شکل ۲۹ (ساده) و ۳۰ (گسترش‌یافته)','در GCRA','map'],
+['access','معماری منطقی','Logical','هر قابلیت در کدام دامنه است و چه خدماتی آن را ارائه می‌کنند؟','دامنه‌های منطقی، خدمات، واسط‌ها، وابستگی میان خدمات، سیاست‌ها و ردیابی هر جزء تا نیازمندی و استاندارد.','فصل ۵، شکل ۵۹','در GCRA','logical'],
+['service','معماری استقرار','Deployment','این معماری منطقی در محیط واقعی چگونه مستقر می‌شود؟','الگوهای استقرار، نواحی اعتماد، جانمایی بار کاری، Landing Zone، توپولوژی پنج‌سطحی و کاتالوگ ADR.','فصل ۶، شکل ۷۳ (توپولوژی) و ۷۶','در GCRA','topology'],
+['resource','مدل پیاده‌سازی','Implementation','از معماری مرجع چطور به ابر عملیاتی می‌رسیم؟','سیزده فاز، جریان‌های کاری، KPI، مدل بلوغ، پیاده‌سازی مرجع و پایلوت. انتخاب فناوری پس از تأیید معماری انجام می‌شود.','فصل ۷، شکل ۱۰۱','در GCRA؛ انتخاب محصول بیرون از آن','phases'],
+['slate','معماری کلان','Macro view','همهٔ این‌ها در یک نگاه چه شکلی دارد؟','نمای یکپارچه: چهار لایه، هشت قابلیت عرضی و پنج مدل استقرار. در همین پیوست، شکل ۱۰۴ معماری کلان شبکهٔ ملی اطلاعات را هم می‌آورد.','پیوست معماری کلان، شکل ۱۰۳','در GCRA','map']];
+$('levels').innerHTML=LEVELS.map(function(l,i){return '<button type="button" class="row L-'+l[0]+'" data-i="'+i+'"><span class="n">'+fa(i+1)+'</span><span><b>'+l[1]+' <span class="en" style="font-weight:500;color:var(--muted);font-size:12.5px">'+l[2]+'</span></b><span>'+l[3]+'</span></span></button>'}).join('');
+function showLevel(i){var l=LEVELS[i];[].forEach.call($('levels').children,function(b,k){b.classList.toggle('sel',k===i)});
+  $('d-levels').className='panel detail L-'+l[0];
+  $('d-levels').innerHTML='<span class="tag">'+l[6]+'</span><h3>'+l[1]+'</h3><dl><dt>پرسش</dt><dd>'+l[3]+'</dd><dt>چه چیزی در آن هست</dt><dd>'+l[4]+'</dd><dt>در GCRA کجاست</dt><dd>'+l[5]+'</dd></dl>'+(l[7]?'<p><a href="#'+l[7]+'" style="color:var(--accent);font-weight:700">دیدن این سطح در سایت</a></p>':'')+'<div class="note">بی‌طرفی فناورانه: در معماری قابلیت و الگو تعریف می‌شود (مثل سکوی کانتینر) و محصول به پیاده‌سازی می‌ماند (بخش ۷.۴).</div>';}
+$('levels').addEventListener('click',function(e){var b=e.target.closest('button');if(b)showLevel(+b.dataset.i)});showLevel(3);
+
+/* ---------- topology ---------- */
+var TOPO=[
+['gov','gov','۱. حکمرانی ملی',['سیاست‌گذاری','Governance','Security و Compliance'],'سیاست‌گذاری، حکمرانی، امنیت و انطباق. در شکل ۷۳، OSS و BSS هم در این سطح دیده شده است.'],
+['core','user','۲. هستهٔ ملی',['فدراسیون هویت','درگاه API','سکوی تبادل داده','خدمات امنیتی مشترک','پایش متمرکز','کاتالوگ خدمات','حاکمیت ابر','مدیریت بین‌ابری'],'قابلیت‌ها و سرویس‌های مشترک دولت: خدمات مشترک، تبادل داده و هوش مصنوعی دولتی.'],
+['fgw',null,'Federation Gateway',[],'نقطهٔ کنترل امن اتصال میان ابرها: اعمال سیاست، فدراسیون هویت، کنترل امنیتی و تعامل‌پذیری (بخش ۸۰).'],
+['reg','access','۳. ابر منطقه‌ای',['منطقهٔ A','منطقهٔ B','منطقه‌های دیگر'],'ظرفیت توزیع‌شده و تاب‌آوری.'],
+['agency','service','۴. ابر دستگاهی',['ابر وزارتخانه','ابر سازمان','ابر نهاد عمومی'],'بارهای کاری اختصاصی دستگاه‌ها.'],
+['edge','resource','۵. لبه',['نزدیک کاربر','نزدیک دستگاه و سنسور','نزدیک منبع داده'],'پردازش نزدیک به کاربر، دستگاه و منبع داده. الگوی استقرار است، نه لایه.']];
+var EXT='دامنهٔ استقرار خارج از مرز اعتماد اصلی که با سیاست و فدراسیون کنترل می‌شود. هر تعامل با بیرون (ابر خارجی، شرکا، اینترنت) از یک مرز کنترل‌شده می‌گذرد: هویت، رمزنگاری، امنیت API، امنیت شبکه، سیاست، پایش و ممیزی.';
+var PATS=[['متمرکز',['gov','core'],'الگوی ۱: مناسب خدمات مشترک و بارهای کاری استاندارد.'],
+['فدراسیونی',['gov','core','fgw','reg','agency'],'الگوی ۲: ابر فدراسیونی دستگاه اجرایی، برای دستگاه‌هایی که به استقلال بیشتری نیاز دارند.'],
+['ترکیبی',['gov','core','fgw','reg','agency','edge','ext'],'الگوی ۳: ابر ترکیبی دولت، برای بارهای کاری با الزامات متفاوت.'],
+['مرزی (Edge)',['gov','core','fgw','edge'],'الگوی ۴: ابر مرزی دولت، برای خدمات Real-Time و Low-Latency.'],
+['چندابری',['gov','core','fgw','reg','agency','ext'],'الگوی ۵: برای تاب‌آوری، قابلیت حمل، خدمات تخصصی و تنوع تأمین‌کننده.']];
+var selPat=1;
+$('trust').insertAdjacentHTML('beforeend',TOPO.map(function(t,i){
+  if(t[0]==='fgw')return '<button type="button" class="fgw" data-t="'+i+'" data-k="fgw"><span class="en">Federation Gateway</span></button>';
+  return '<button type="button" class="tl L-'+t[1]+'" data-t="'+i+'" data-k="'+t[0]+'" style="--n:'+(t[3].length>3?4:3)+'"><span class="lname">'+t[2]+'</span><span class="chips">'+t[3].map(function(x){return '<span>'+x+'</span>'}).join('')+'</span></button>'}).join(''));
+$('pat').innerHTML=PATS.map(function(p,i){return '<button type="button" class="chip" data-p="'+i+'">'+p[0]+'</button>'}).join('');
+function drawPat(){var p=PATS[selPat];[].forEach.call($('pat').children,function(b,i){b.setAttribute('aria-pressed',i===selPat)});
+  [].forEach.call(document.querySelectorAll('#trust [data-k]'),function(b){b.classList.toggle('off',p[1].indexOf(b.dataset.k)<0)});
+  $('ext').classList.toggle('off',p[1].indexOf('ext')<0);
+  $('d-topo').className='panel detail L-gov';$('d-topo').innerHTML='<span class="tag">الگوی استقرار (بخش ۶۳)</span><h3>'+p[0]+'</h3><p>'+p[2]+'</p><div class="note">روی هر سطح بزنید تا توضیح آن را ببینید.</div>';}
+$('pat').addEventListener('click',function(e){var b=e.target.closest('button');if(b){selPat=+b.dataset.p;drawPat()}});
+$('trust').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;var t=TOPO[b.dataset.t];
+  $('d-topo').className='panel detail L-'+(t[1]||'gov');$('d-topo').innerHTML='<span class="tag">سطح توپولوژی (بخش ۶۱)</span><h3>'+t[2]+'</h3><p>'+t[4]+'</p>'+(t[3].length?ul(t[3]):'')});
+$('ext').addEventListener('click',function(){$('d-topo').className='panel detail L-slate';$('d-topo').innerHTML='<span class="tag">خارج از مرز اعتماد</span><h3>ابر بیرونی</h3><p>'+EXT+'</p><p>فقط از راه Federation Gateway و تحت سیاست وصل می‌شود.</p>'});
+drawPat();
+
+/* ---------- placement ---------- */
+var PF=[['sens','Sensitivity',['Public','Sensitive','Critical'],1],['avail','Availability',['Standard','High','Mission Critical'],1],['lat','Latency',['Normal','Low Latency','Real-Time'],0],['data','Data',['Local','National','Federated'],0],['proc','Processing',['General','AI','HPC'],0],['reg','Regulatory',['Open','Controlled','Restricted'],1]];
+var ZONES={core:['هستهٔ ملی','user','برای خدمات مشترک و داده‌های حیاتی ملی.'],reg:['ابر منطقه‌ای','access','برای افزایش تاب‌آوری و کاهش تأخیر در مناطق جغرافیایی.'],agency:['ابر دستگاه اجرایی','service','برای بارهای کاری اختصاصی و حساس دستگاه.'],edge:['نود مرزی','resource','برای پردازش‌های بلادرنگ و محلی، نزدیک کاربر یا سنسور.'],ext:['ابر بیرونی','slate','برای بار غیرحساس یا نیاز به مقیاس‌پذیری ناگهانی، با رعایت کنترل‌های امنیتی.']};
+$('pf').innerHTML=PF.map(function(f){return '<label for="pf-'+f[0]+'"><span class="en" style="text-align:right">'+f[1]+'</span><select id="pf-'+f[0]+'" class="en">'+f[2].map(function(o,j){return '<option value="'+j+'"'+(j===f[3]?' selected':'')+'>'+o+'</option>'}).join('')+'</select></label>'}).join('');
+function place(){var v={};PF.forEach(function(f){v[f[0]]=+$('pf-'+f[0]).value});var z,why=[],ctl=[];
+  if(v.lat===2){z='edge';why.push('پردازش بلادرنگ باید نزدیک کاربر یا منبع داده انجام شود.');if(v.sens>0)ctl.push('نسخهٔ مرجع دادهٔ حساس در ابر دستگاه یا هسته بماند.')}
+  else if(v.sens===2){if(v.data===0){z='agency';why.push('بار حیاتی با دادهٔ محلی، اختصاصی دستگاه است.')}else{z='core';why.push('دادهٔ حیاتی ملی در هسته قرار می‌گیرد.')}}
+  else if(v.sens===1){if(v.data===0){z='agency';why.push('بار حساس و اختصاصی دستگاه است.')}else if(v.lat===1||v.data===2){z='reg';why.push(v.lat===1?'تأخیر کم با ظرفیت منطقه‌ای تأمین می‌شود.':'دادهٔ فدراسیونی میان چند دستگاه مشترک است.')}else{z='core';why.push('دادهٔ حساس ملی است.')}}
+  else{if(v.proc>0){z='core';why.push('پردازش AI یا HPC به ظرفیت مشترک هسته نیاز دارد.')}else if(v.reg===0&&v.avail===0&&v.lat===0){z='ext';why.push('بار غیرحساس، استاندارد و بدون محدودیت مقرراتی است.')}else{z='reg';why.push('بار عمومی با نیاز به تاب‌آوری یا تأخیر کم.')}}
+  if(v.reg===2&&z==='ext'){z='reg'}
+  if(z==='ext')ctl.push('طبقه‌بندی و محل اقامت داده، رمزنگاری، فدراسیون هویت، ممیزی و راهبرد خروج.');
+  if(v.avail===2)ctl.push('استقرار چندمنطقه‌ای بر پایهٔ RTO و RPO.');else if(v.avail===1)ctl.push('HA و برنامهٔ DR.');
+  if(v.sens===2)ctl.push('استخر منابع ایزوله.');if(v.reg===2)ctl.push('الزام مقرراتی Restricted: استقرار فقط درون مرز اعتماد.');
+  ctl.push('ورود از Landing Zone استاندارد.');var Z=ZONES[z];
+  $('pres').innerHTML='<div class="result L-'+Z[1]+'"><span style="font-size:12.5px;font-weight:700;color:var(--muted)">ناحیهٔ پیشنهادی</span><h3>'+Z[0]+'</h3><p style="margin:0">'+why.join(' ')+'</p><b style="display:block;margin-top:8px">کنترل‌های همراه</b>'+ul(ctl)+'</div><h3 class="sec">پنج ناحیهٔ استقرار در کتاب</h3><div class="grid3">'+Object.keys(ZONES).map(function(k){var q=ZONES[k];return '<div class="card L-'+q[1]+'"'+(k===z?' style="border-color:var(--c)"':'')+'><h4 style="color:var(--c)">'+q[0]+'</h4><p>'+q[2]+'</p></div>'}).join('')+'</div>';}
+$('pf').addEventListener('change',place);place();
+
+/* ---------- phases ---------- */
+var PH=[['بکارگیری معماری','GCRA Baseline، اصول، مدل حکمرانی، کاتالوگ استاندارد، Security Baseline، سیاست ابر، مدل عملیاتی و نقشهٔ راه. کمیتهٔ حکمرانی با زیرکمیته‌های معماری، امنیت و داده.'],['Cloud Landing Zone','اولین خروجی فنی. Landing Zone به‌صورت Template ساخته می‌شود و برای هر دستگاه فقط پارامترهایی مثل نام پروژه، محدودهٔ IP و تگ‌ها تغییر می‌کند.'],['Core Cloud Platform','Compute، Storage و Network؛ مجازی‌سازی و کانتینر؛ IaaS، PaaS و CaaS؛ استخر منابع مشترک با استخر ایزوله برای بار حساس.'],['Security Baseline','Security by Design در کل چرخه؛ IAM و PAM، مدیریت کلید و Secrets، Zero Trust.'],['OSS','مشاهده‌پذیری، مدیریت عملیات و تضمین کیفیت خدمت، همراه مرکز عملیات. Deployment Gate از این‌جا اجباری می‌شود.'],['BSS و FinOps','کاتالوگ خدمت، Metering، Showback/Chargeback و بودجه.'],['Integration و Data Platform','API Gateway، Data Exchange و Event Bus. اتصال مستقیم ممنوع می‌شود.'],['سکوی توسعه‌دهنده','CI/CD با تست امنیت، کیفیت، انطباق و کارآیی. عبور از این Gate اجباری است.'],['خدمات مشترک','اولویت با خدمتی است که بیشترین مصرف‌کننده و قابلیت استفادهٔ مجدد را دارد.'],['پذیرش دستگاه‌ها','ارزیابی (آمادگی، طبقه‌بندی بار، ارزیابی مهاجرت)، تدارک (Landing Zone، اتصال، یکپارچگی امنیت) و اجرا (مهاجرت، اعتبارسنجی، Production).'],['مهاجرت بارها','مهاجرت فقط جابه‌جایی دارایی نیست. کارخانهٔ مهاجرت: ارزیابی، مهاجرت، اعتبارسنجی.'],['فدراسیون','Federation Gateway برای اتصال ابر دستگاهی، منطقه‌ای و بیرونی. ترافیک مستقیم بین ابرها ممنوع است.'],['تاب‌آوری','Active-Active یا Active-Standby بر پایهٔ RTO و RPO، همگام‌سازی داده و Global Load Balancer.']];
+$('phases').innerHTML=PH.map(function(p,i){return '<button type="button" class="chip" data-i="'+i+'"><small>فاز '+fa(i)+'</small>'+p[0]+'</button>'}).join('');
+function showPh(i){[].forEach.call($('phases').children,function(b,k){b.setAttribute('aria-pressed',k===i)});
+  $('d-phase').innerHTML='<span class="tag">فاز '+fa(i)+' از ۱۲ · بخش '+fa(69+i)+'</span><h3>'+PH[i][0]+'</h3><p>'+PH[i][1]+'</p><div class="note">پنج جریان کاری موازی: حاکمیت، سکو، امنیت، عملیات (OSS و BSS)، خدمات و توانمندسازی.</div>';}
+$('phases').addEventListener('click',function(e){var b=e.target.closest('button');if(b)showPh(+b.dataset.i)});showPh(1);
+$('done').innerHTML=['Technology','Functionality','Integration','Security','Operations','Governance'].map(function(s,i){return '<span class="en">'+(i+1)+'. '+s+'</span>'}).join('');
+$('road').innerHTML='<tr><th>فاز</th><th>بازه</th><th>خروجی</th><th>معیار موفقیت</th></tr>'+[['۱. پایه‌گذاری','۱۴۰۴ تا ۱۴۰۵','GCRA، پنج دستورالعمل ماده ۸، Landing Zone، Core Platform، Security Baseline، OSS پایه','زیرساخت کامل، پایلوت دو دستگاه'],['۲. قابلیت‌ها','۱۴۰۵ تا ۱۴۰۶','BSS و FinOps، Integration، Data Exchange، سکوی توسعه، خدمات مشترک، Federation Gateway','پنج سرویس مشترک، Federation Gateway فعال'],['۳. گسترش','۱۴۰۶ تا ۱۴۰۸','ورود دستگاه‌ها، کارخانهٔ مهاجرت، چندمنطقه‌ای، لبه، سکوی AI','۸۰٪ دستگاه‌ها، ۱۰۰٪ بار غیرحساس، ۵۰٪ بار حیاتی'],['۴. تکامل','۱۴۰۸ تا ۱۴۰۹','IaC و PaC کامل، عملیات هوشمند، جانمایی پویا، نسخهٔ ۲٫۰','بلوغ سطح ۵، کاهش ۲۰٪ هزینه']].map(function(r){return '<tr><td><b>'+r[0]+'</b></td><td>'+r[1]+'</td><td>'+r[2]+'</td><td>'+r[3]+'</td></tr>'}).join('');
+
+/* ---------- maturity ---------- */
+var MD=[['حکمرانی','وجود سیاست‌های ابری',['ندارد','اولیه','تدوین‌شده','اجرا می‌شود','بهینه‌سازی مستمر'],10,3],['حکمرانی','ساختار حکمرانی',['ندارد','تعریف‌شده','فعال','کارآمد','تطبیق‌پذیر'],10,2],['زیرساخت','استقرار Landing Zone',['ندارد','طراحی‌شده','پیاده‌سازی‌شده','خودکار','بهینه'],15,3],['زیرساخت','استفاده از IaC',['ندارد','بررسی','جزئی','گسترده','کامل'],10,2],['امنیت','پیاده‌سازی اعتماد صفر',['ندارد','برنامه','جزئی','گسترده','کامل'],15,2],['امنیت','پایش امنیتی',['دستی','پایه','مرکزی','خودکار','هوشمند'],10,3],['یکپارچه‌سازی','استفاده از API',['ندارد','محدود','استاندارد','گسترده','کامل'],10,3],['یکپارچه‌سازی','فدراسیون',['ندارد','بررسی','هویت','سرویس و داده','کامل'],10,2],['عملیات','پایش و مشاهده‌پذیری',['دستی','پایه','مرکزی','خودکار','پیش‌بینانه'],10,3],['عملیات','مدیریت خودکار',['ندارد','برنامه','جزئی','گسترده','کامل'],10,2],['خدمات','استفاده از خدمات مشترک',['ندارد','بررسی','چند سرویس','اکثر سرویس‌ها','تمام سرویس‌ها'],10,2]];
+var ML=[['اولیه (Initial)','ابرهای پراکنده و عملیات دستی؛ حکمرانی محدود.'],['استانداردسازی (Standardized)','معماری مرجع، Security Baseline و سیاست‌های مشترک.'],['یکپارچه‌سازی (Integrated)','فدراسیون ابری، خدمات مشترک، یکپارچه‌سازی API، OSS و BSS مرکزی و FinOps.'],['خودکارسازی (Automated)','IaC، Policy as Code، DevSecOps و Automated Compliance.'],['هوشمند و تطبیق‌پذیر (Adaptive)','خودکارسازی هوشمند، نگهداری پیشگیرانه، جانمایی پویا و عامل‌های هوشمند.']];
+$('msl').innerHTML='<div class="form">'+MD.map(function(d,i){return '<label for="m'+i+'">'+d[0]+': '+d[1]+' (وزن '+fa(d[3])+'٪)<select id="m'+i+'">'+d[2].map(function(o,j){return '<option value="'+(j+1)+'"'+(j+1===d[4]?' selected':'')+'>'+fa(j+1)+'. '+o+'</option>'}).join('')+'</select></label>'}).join('')+'</div><div class="note">وزن‌های جدول ۲۷ جمعا ۱۲۰٪ می‌شود. این صفحه امتیاز را به ۱۰۰ نرمال می‌کند (سطح تقسیم بر ۵، ضرب در وزن). برای ارزیابی رسمی روش کتاب را به کار ببرید.</div>';
+function mat(){var s=0,w=0;MD.forEach(function(d,i){s+=(+$('m'+i).value)/5*d[3];w+=d[3]});
+  var sc=Math.round(s/w*100),lv=Math.min(4,Math.max(0,Math.ceil(sc/20)-1));
+  $('d-mat').innerHTML='<span class="tag">امتیاز از ۱۰۰</span><div class="score">'+fa(sc)+'</div><div class="steps">'+ML.map(function(_,i){return '<span class="'+(i<=lv?'on':'')+'"></span>'}).join('')+'</div><h3>سطح '+fa(lv+1)+': '+ML[lv][0]+'</h3><p>'+ML[lv][1]+'</p>'+(lv<4?'<dl><dt>سطح بعد</dt><dd>'+ML[lv+1][0]+': '+ML[lv+1][1]+'</dd></dl>':'')+'<div class="note">بازه‌ها: ۰ تا ۲۰ سطح ۱، ۲۱ تا ۴۰ سطح ۲، ۴۱ تا ۶۰ سطح ۳، ۶۱ تا ۸۰ سطح ۴، ۸۱ تا ۱۰۰ سطح ۵. دستگاه باید برنامهٔ ارتقای بلوغ را به نهاد ناظر بدهد (بخش ۹۲.۳).</div>';}
+$('msl').addEventListener('change',mat);mat();
+
+/* ---------- checklist ---------- */
+var CK=['طرح به کدام پیشران و نیازمندی وصل است؟ (ردیابی)','کدام قابلیت، لایه و خدمت منطقی را پوشش می‌دهد؟ لایهٔ جدیدی ساخته نشده باشد.','از خدمت مشترک یا فدراسیون موجود استفادهٔ مجدد شده است؟','اتصال Point-to-Point ندارد و از API، Data Exchange یا Event می‌گذرد؟','طبقه‌بندی داده، مالک، محل اقامت، رمزنگاری و راهبرد خروج مشخص است؟','از Landing Zone استاندارد وارد می‌شود و Guardrail و IaC دارد؟','Deployment Gate (لاگ، متریک، Health Check، هشدار، Audit Trail) و تست‌های CI/CD را می‌گذراند؟','تاب‌آوری (RTO/RPO، چندسایتی) و جانمایی بار کاری توجیه شده است؟','فناوری بی‌طرفانه و بعد از تأیید معماری انتخاب شده است؟','در صورت انحراف، استثنا با دلیل، ریسک، کنترل جبرانی، انقضا و مالک ثبت شده است؟','تعریف Done تا سطح Governance (KPI و SLA) رعایت شده است؟'];
+var st=[];try{st=JSON.parse(localStorage.getItem('gcra-ck')||'[]')}catch(e){st=[]}
+$('ck').innerHTML=CK.map(function(c,i){return '<label for="ck'+i+'"><input type="checkbox" id="ck'+i+'"'+(st[i]?' checked':'')+'><span><b>'+fa(i+1)+'.</b> '+c+'</span></label>'}).join('');
+function ck(){var n=0;st=CK.map(function(_,i){var v=$('ck'+i).checked;if(v)n++;return v});
+  $('ckn').textContent=fa(n)+' از '+fa(CK.length)+' مورد تأیید شده';$('ckb').style.width=(n/CK.length*100)+'%';
+  try{localStorage.setItem('gcra-ck',JSON.stringify(st))}catch(e){}}
+$('ck').addEventListener('change',ck);$('ckr').addEventListener('click',function(){CK.forEach(function(_,i){$('ck'+i).checked=false});ck()});ck();
+
+/* ---------- principles ---------- */
+var PR=[['اصول معماری کلان',[['فدراسیون به جای تمرکز','ابر دولت فدراسیونی طراحی می‌شود و دستگاه‌ها استقلال خود را حفظ می‌کنند.','بخش ۴۶.۱ و ۴۸'],['اشتراک تا حد ممکن، جداسازی تا حد نیاز','خدمات مشترک تا حد امکان؛ جداسازی برای بارهای حساس.','بخش ۴۶.۲'],['حفظ چهار لایهٔ CCRA','ساختار چهارلایه ستون فقرات معماری است.','بخش ۷.۲'],['معماری مبتنی بر قابلیت','معماری بر پایهٔ قابلیت‌ها تعریف می‌شود، نه محصولات.','بخش ۹'],['امنیت در طراحی','امنیت از ابتدای چرخهٔ عمر لحاظ می‌شود.','بخش ۲۴.۳ و ۷۲.۱'],['حکمرانی داده از ابتدا','مالکیت، طبقه‌بندی، سیاست دسترسی و چرخهٔ حیات داده از اول مشخص است.','بخش ۲۴.۴'],['تعامل‌پذیری در طراحی','همهٔ سرویس‌ها با فرض یکپارچه‌سازی طراحی می‌شوند.','بخش ۲۴.۲'],['خودکارسازی از ابتدا','خودکارسازی در مقیاس ملی از اول در معماری است.','بخش ۲۴.۵'],['معماری مستقل از فناوری','معماری قابلیت را تعریف می‌کند؛ محصول به پیاده‌سازی واگذار می‌شود.','بخش ۷.۴'],['تاب‌آوری ملی','معماری در برابر خرابی، حمله و بحران تاب‌آور است.','بخش ۱۹'],['استانداردهای باز','برای API، داده، هویت، شبکه و امنیت.','بخش ۸۴.۱'],['تکامل مستمر معماری','معماری سند ایستا نیست و مستمر بازبینی می‌شود.','بخش ۹۲']]],
+['اصول بومی‌سازی',[['عدم Vendor Lock-in','وابستگی به یک فروشنده نباید معماری را قفل کند.','بخش ۲۴'],['تعامل‌پذیری در طراحی','اتصال میان دستگاه‌ها از اول دیده می‌شود.','بخش ۲۴'],['امنیت در طراحی','امنیت بعدا اضافه نمی‌شود.','بخش ۲۴'],['حکمرانی داده در طراحی','مالک، طبقه‌بندی، سیاست دسترسی، چرخهٔ حیات، نگهداشت و ممیزی.','بخش ۲۴'],['خودکارسازی از اول','IaC، Policy as Code، Security as Code و انطباق خودکار.','بخش ۲۴'],['بارهای کاری ترکیبی','همهٔ سامانه‌ها بومی ابر نمی‌شوند.','بخش ۲۴']]],
+['خطاهای رایج',[['شروع از محصول','پروژه از انتخاب محصول یا فروشنده شروع می‌شود.',''],['یک مرکز داده','ابر دولت به یک مرکز داده یا تمرکز کامل فروکاسته می‌شود.',''],['لایهٔ پنجم','برای امنیت، OSS، Edge یا AI لایهٔ جدید ساخته می‌شود.',''],['تحمیل خدمت مشترک','بدون امکان استقلال یا جایگزینی برای دستگاه.',''],['Big Bang','به‌جای فازبندی، و پایان پروژه با نصب به‌جای Done شش‌مرحله‌ای.',''],['استثنای دائمی','یا استثنای بدون کنترل جبرانی.',''],['ابر خارجی بدون راهبرد خروج','نادیده‌گرفتن حاکمیت داده و Exit Strategy.',''],['استاندارد بدون نگاشت','ارجاع به استاندارد بدون نگاشت به قابلیت و مدرک انطباق.','']]]];
+var prSel=0;
+function drawPr(){$('pr-sub').innerHTML=PR.map(function(g,i){return '<button type="button" class="chip" data-i="'+i+'" aria-pressed="'+(i===prSel)+'">'+g[0]+'</button>'}).join('');
+  $('pr-grid').innerHTML=PR[prSel][1].map(function(c,i){return '<div class="card"><h4>'+fa(i+1)+'. '+esc(c[0])+'</h4><p>'+esc(c[1])+'</p>'+(c[2]?'<span class="ref">'+c[2]+'</span>':'')+'</div>'}).join('');}
+$('pr-sub').addEventListener('click',function(e){var b=e.target.closest('button');if(b){prSel=+b.dataset.i;drawPr()}});drawPr();
+
+/* ---------- method ---------- */
+$('chain').innerHTML=['پیشران','نیازمندی','قابلیت','لایه یا دامنه','خدمت منطقی','استاندارد'].map(function(s){return '<span>'+s+'</span>'}).join('<i>←</i>');
+var S7=[['ثبت مبنای CCRA','لایه‌ها، نقش‌ها، قابلیت‌ها، مدل‌های خدمت و منبع، قابلیت‌های عرضی و روابط بدون تغییر ثبت می‌شوند.'],['شناسایی پیشران‌ها','یازده پیشران جدول ۱۲: دولت هوشمند، خدمات دیجیتال یکپارچه، امنیت سایبری، حکمرانی داده و حاکمیت ملی، تعامل‌پذیری بین‌دستگاهی، اشتراک منابع زیرساختی، تداوم و تاب‌آوری، کنترل هزینه، ظرفیت Cloud-Native و AI، کاهش وابستگی راهبردی، و انطباق قانونی.'],['استخراج نیازمندی','از هر پیشران نیازمندی بیرون می‌آید. نمونه: حکمرانی داده، کنترل محل اقامت داده.'],['نگاشت نیازمندی به قابلیت','نمونه: Residency Enforcement Engine.'],['نگاشت قابلیت به لایه','قابلیت یا مال یک لایه است، یا میان‌لایه‌ای، یا عرضی.'],['نگاشت قابلیت به استاندارد','نمونه: Zero Trust به NIST SP 800-207، ISO 27001 و CSA.'],['تعریف توسعه‌ها','مشخص می‌شود چه چیزی حفظ، چه چیزی سفارشی و چه چیزی جدید است.']];
+$('steps7').innerHTML=S7.map(function(s,i){return '<button type="button" class="row" data-i="'+i+'"><span class="n">'+fa(i+1)+'</span><span><b>'+s[0]+'</b></span></button>'}).join('');
+function showS7(i){[].forEach.call($('steps7').children,function(b,k){b.classList.toggle('sel',k===i)});$('d-step').innerHTML='<span class="tag">مرحلهٔ '+fa(i+1)+' از ۷ (بخش ۸)</span><h3>'+S7[i][0]+'</h3><p>'+S7[i][1]+'</p>'}
+$('steps7').addEventListener('click',function(e){var b=e.target.closest('button');if(b)showS7(+b.dataset.i)});showS7(1);
+$('pcn').innerHTML=[['حفظ','L-access',['مدل‌های خدمت','مفاهیم منبع','لایه‌بندی']],['سفارشی‌سازی','L-resource',['هویت','SLA','امنیت','مدیریت داده','چندابری']],['جدید','L-service',['فدراسیون دولت','خدمات مشترک','حکمرانی ملی داده','نهاد ناظر','تاب‌آوری ملی','FinOps دولت','حاکمیت دیجیتال','یکپارچگی سراسری دولت']]].map(function(c){return '<div class="card '+c[1]+'"><h4 style="color:var(--c)">'+c[0]+'</h4>'+ul(c[2])+'</div>'}).join('');
+var GT=['از نیاز دولت ناشی می‌شود؟','در CCRA نیست یا به تخصصی‌سازی نیاز دارد؟','قابلیت معماری است، نه صرفا یک فناوری؟','در چند دستگاه قابل استفادهٔ مجدد است؟','به یک نیازمندی مشخص وصل است؟','استاندارد یا چارچوب پشتیبان دارد؟','جایش معماری مرجع است، نه معماری پیاده‌سازی؟'];
+$('gt').innerHTML=GT.map(function(q,i){return '<label for="gt'+i+'"><input type="checkbox" id="gt'+i+'"'+(i<4?' checked':'')+'><span>'+q+'</span></label>'}).join('');
+function gt(){var n=GT.filter(function(_,i){return $('gt'+i).checked}).length,ok=n===GT.length;
+  $('gt-res').innerHTML='<span class="badge '+(ok?'ok':'bad')+'">'+fa(n)+' از ۷</span> '+(ok?'هر هفت معیار برقرار است؛ این قابلیت می‌تواند در GCRA بیاید.':'هنوز همهٔ معیارها برقرار نیست. معیارهای بی‌پاسخ را روشن کنید یا قابلیت را به معماری پیاده‌سازی بسپارید.')}
+$('gt').addEventListener('change',gt);gt();
+$('diff').innerHTML=['حاکمیت دولتی','فدراسیون چندسازمانی','خدمات مشترک','حکمرانی داده','حاکمیت دیجیتال','تاب‌آوری ملی','امنیت دولتی','یکپارچه‌سازی بین‌دستگاهی','OSS دولتی','BSS و مدیریت مالی دولت','پشتیبانی از توسعه'].map(function(s){return '<span>'+s+'</span>'}).join('');
+
+/* ---------- logical ---------- */
+var LG=[['user','لایهٔ کاربری','Government User & Identity',['خدمت هویت دولت','فدراسیون هویت','مدیریت اعتبارنامه','هویت ماشین و عامل هوشمند']],['access','لایهٔ دسترسی','Access & Connectivity',['درگاه API','Federation Gateway','پورتال خدمات','دسترسی لبه']],['service','لایهٔ خدمت','Cloud Services',['IaaS، PaaS و SaaS','خدمات مشترک دولت','سکوی داده و AI','سکوی توسعه‌دهنده']],['resource','لایهٔ منبع','Resource & Infrastructure / Data',['محاسبات و GPU','ذخیره‌سازی و پشتیبان','شبکه و بخش‌بندی','ذخیره‌گاه داده']]];
+var ITF=[['UI',[0,1],'رابط کاربری، برای تعامل انسان با سامانه.'],['API',[0,1,2],'رابط برنامه‌نویسی، برای ارتباط سرویس‌ها. API یکی از سازوکارهای اصلی یکپارچه‌سازی است (API-First).'],['Service',[1,2],'رابط سرویس، برای تعامل میان خدمات ابری.'],['Event',[1,2],'رابط رویداد، برای ارتباط ناهم‌زمان و مبتنی بر رویداد.'],['Management',[2,3],'رابط مدیریتی، برای عملیات و پیکربندی.'],['Data',[2,3],'رابط داده، برای تبادل اطلاعات.'],['Security',[0,1,2,3],'رابط امنیتی، برای اعمال کنترل دسترسی و رمزنگاری.'],['Inter-Cloud',[1],'رابط بین‌ابری، برای اتصال محیط‌های مختلف ابری.']];
+var itfSel=1;
+function drawLg(){var it=ITF[itfSel];$('itf-sub').innerHTML=ITF.map(function(t,i){return '<button type="button" class="chip en" data-i="'+i+'" aria-pressed="'+(i===itfSel)+'">'+t[0]+'</button>'}).join('');
+  $('lg').innerHTML=LG.map(function(l,i){return '<div class="lg-row L-'+l[0]+(it[1].indexOf(i)<0?' dim':'')+'" style="margin-bottom:8px"><div class="lname" style="display:grid;place-items:center;text-align:center">'+l[1]+'</div><div class="dom en">'+l[2]+'</div><div class="chips">'+l[3].map(function(s){return '<span>'+s+'</span>'}).join('')+'</div></div>'}).join('');
+  $('d-lg').innerHTML='<span class="tag">یکی از هشت دستهٔ واسط (بخش ۴۱)</span><h3 class="en" style="text-align:right">'+it[0]+'</h3><p>'+it[2]+'</p><dl><dt>لایه‌های درگیر</dt><dd>'+it[1].map(function(i){return LG[i][1]}).join('، ')+'</dd><dt>زنجیرهٔ ردیابی</dt><dd>هر خدمت منطقی از یک قابلیت می‌آید و با یک جزء پیاده می‌شود. جزء بی‌پشتوانه کاندیدای حذف است.</dd></dl><div class="note">تعریف هشت واسط از کتاب است؛ این‌که هر واسط میان کدام لایه‌هاست در این صفحه پیشنهادی است.</div>';}
+$('itf-sub').addEventListener('click',function(e){var b=e.target.closest('button');if(b){itfSel=+b.dataset.i;drawLg()}});drawLg();
+$('svc-id').innerHTML=['شناسهٔ یکتا','دامنه','لایه','قابلیت','مخاطب','وابستگی','واسط','سیاست','استاندارد','مالک','SLA','ورودی کاتالوگ'].map(function(s){return '<span>'+s+'</span>'}).join('');
+$('data-dom').innerHTML=['Government','Citizen','Business','Operational','Public','Sensitive','Critical','Metadata','Master','Reference'].map(function(s){return '<span class="en">'+s+'</span>'}).join('');
+
+/* ---------- technical ---------- */
+var TB=function(c,t,items){return '<div class="tband L-'+c+'"><b>'+t+'</b>'+items.map(tc).join('')+'</div>'};
+function tc(it){return '<button type="button" class="chip" data-ph="'+it[1]+'">'+it[0]+'</button>'}
+var SITE=[['سکوی کانتینر',2],['مجازی‌سازی (VM) و GPU',2],['ذخیره‌سازی Block، Object و File',2],['SDN و بخش‌بندی شبکه',2],['استخر ایزوله برای بار حساس',2]];
+function tcol(c,t,items){return '<div class="tcol L-'+c+'"><h4>'+t+'</h4>'+items.map(tc).join('')+'</div>'}
+$('tech').innerHTML=TB('gov','ورودی و مرز',[['شبکهٔ دولت و اینترنت',1],['Global Load Balancer',12],['API Gateway',6],['Federation Gateway',11]])+'<div class="tcols">'+
+  tcol('user','صفحهٔ کنترل و هویت',[['IAM و PAM',3],['مدیریت کلید و Secrets',3],['Policy as Code',1],['IaC و قالب Landing Zone',1],['CI/CD و Registry',7]])+tcol('service','سایت ۱ (فعال)',SITE)+tcol('service','سایت ۲ (فعال یا آماده‌به‌کار)',SITE)+
+  tcol('slate','عملیات، امنیت و مالی',[['Metrics، Logs و Traces',4],['SIEM و مرکز عملیات (NOC/SOC)',4],['Metering و FinOps',5],['پشتیبان‌گیری و Replication',12],['کاتالوگ و پورتال خدمت',5]])+'</div>'+
+  TB('access','داده و یکپارچه‌سازی',[['Data Exchange',6],['Event Bus',6],['پایگاه داده و سکوی داده',6],['همگام‌سازی داده میان سایت‌ها',12]]);
+function showTech(b){[].forEach.call(document.querySelectorAll('#tech .chip'),function(c){c.setAttribute('aria-pressed',c===b||(b&&c.dataset.ph===b.dataset.ph&&c.textContent===b.textContent))});
+  var ph=+b.dataset.ph;$('d-tech').innerHTML='<span class="tag">فاز '+fa(ph)+' پیاده‌سازی</span><h3>'+esc(b.textContent)+'</h3><p>این جزء در فاز «'+PH[ph][0]+'» وارد می‌شود.</p><p style="color:var(--muted)">'+PH[ph][1]+'</p><p><a href="#phases" style="color:var(--accent);font-weight:700">دیدن همهٔ فازها</a></p><div class="note">محصول پس از تأیید معماری و با معیارهای ارزیابی فناوری (بخش ۸۳) انتخاب می‌شود.</div>';}
+$('tech').addEventListener('click',function(e){var b=e.target.closest('button');if(b)showTech(b)});showTech(document.querySelector('#tech .chip[data-ph="11"]'));
+
+/* ---------- governance ---------- */
+$('gov-lv').innerHTML=[['راهبردی','هیئت وزیران و نهاد ناظر ابر دولت','سیاست‌گذاری کلان، تصویب معماری، تأمین منابع'],['معماری','کمیتهٔ حکمرانی معماری و معماران ارشد','تدوین، تفسیر، به‌روزرسانی و انطباق GCRA'],['اجرایی','اپراتورها، مدیران فنی دستگاه‌ها، تیم‌های پیاده‌سازی','پیاده‌سازی، نظارت روزانه، مدیریت استثناها']].map(function(g){return '<div class="card"><h4>سطح '+g[0]+'</h4><p><b style="color:var(--ink)">'+g[1]+'</b><br>'+g[2]+'</p></div>'}).join('');
+$('gov-flow').innerHTML=['بررسی معماری','ارزیابی انطباق','کمیتهٔ معماری (در صورت انحراف)','تصمیم یا معافیت','محیط عملیاتی'].map(function(s){return '<span>'+s+'</span>'}).join('<i>←</i>');
+var EX=[['id','شناسه','EXC-1404-001',0],['title','عنوان','استفاده از پایگاه دادهٔ غیراستاندارد',0],['owner','مالک','مدیر فنی دستگاه',0],['exp','تاریخ انقضا','',0],['status','وضعیت','در حال بررسی',0],['reason','دلیل','نیاز به قابلیت خاص که در سرویس استاندارد موجود نیست',1],['scope','محدوده','سامانهٔ X در دستگاه Y',1],['risk','ریسک','ریسک امنیتی: متوسط، ریسک یکپارچه‌سازی: بالا',1],['ctl','کنترل جبرانی','',1]];
+$('exf').innerHTML=EX.map(function(f){return '<label for="ex-'+f[0]+'"'+(f[3]?' class="wide"':'')+'>'+f[1]+(f[3]?'<textarea id="ex-'+f[0]+'">'+f[2]+'</textarea>':'<input type="text" id="ex-'+f[0]+'" value="'+f[2]+'">')+'</label>'}).join('');
+function ex(){var miss=EX.filter(function(f){return !$('ex-'+f[0]).value.trim()}).map(function(f){return f[1]});var w=[];
+  if(!$('ex-exp').value.trim())w.push('استثنا بدون تاریخ انقضا به مجوز دائمی تبدیل می‌شود.');if(!$('ex-ctl').value.trim())w.push('استثنا بدون کنترل جبرانی پذیرفته نمی‌شود.');
+  $('ex-res').innerHTML='<span class="badge '+(miss.length?'bad':'ok')+'">'+fa(EX.length-miss.length)+' از '+fa(EX.length)+' فیلد الزامی</span> '+(miss.length?'هنوز خالی: '+miss.join('، ')+'.':'درخواست کامل است و می‌تواند ثبت شود.')+(w.length?ul(w):'');}
+$('exf').addEventListener('input',ex);ex();
+$('tech-crit').innerHTML=[['انطباق با معماری','سازگاری با لایه‌های GCRA، پشتیبانی از اصول معماری، ردیابی به نیازمندی.'],['استانداردهای باز و قابلیت حمل','استانداردهای باز، قابلیت حمل، جلوگیری از Vendor Lock-in.'],['امنیت','الزامات امنیتی، پایش و ممیزی، مدیریت آسیب‌پذیری، استانداردهای امنیتی.'],['عملیات و قابلیت مدیریت','مشاهده‌پذیری، خودکارسازی، مقیاس‌پذیری، تاب‌آوری، بازیابی خودکار.'],['یکپارچه‌سازی و تعامل‌پذیری','APIهای باز، قابلیت فدراسیون، سازگاری با سامانه‌های موجود.'],['اقتصادی و مالی','TCO، OPEX، CAPEX، شفافیت هزینه، ROI.'],['پشتیبانی و توسعه‌پذیری','فناوری‌های نوین، مسیر تکامل، جامعهٔ کاربری، سفارشی‌سازی.'],['مقبولیت و بلوغ','سابقه و اعتبار، بلوغ فناوری، تطابق با استانداردهای ملی و بین‌المللی.'],['حکمرانی و انطباق','حاکمیت داده، الزامات قانونی، قابلیت حسابرسی.'],['مهارت و نیروی انسانی','دسترسی به نیروی متخصص، پیچیدگی پیاده‌سازی و نگهداری.']].map(function(c,i){return '<div class="card"><h4>'+fa(i+1)+'. '+c[0]+'</h4><p>'+c[1]+'</p></div>'}).join('');
+
+/* ---------- kpi ---------- */
+var KP=[["زیرساخت و سکو", "درصد استقرار زیرساخت هسته ملی", "(تعداد سرویس‌های هسته مستقر / کل سرویس‌های برنامه‌ریزی‌شده) × ۱۰۰", "۱۰۰٪", "سالانه"], ["زیرساخت و سکو", "دسترس‌پذیری سرویس‌های هسته", "(زمان در دسترس بودن / کل زمان) × ۱۰۰", "≥ ۹۹٫۹۹٪", "ماهانه"], ["زیرساخت و سکو", "درصد استفاده از منابع", "(منابع مصرف‌شده / کل منابع موجود) × ۱۰۰", "۶۰-۸۰٪", "ماهانه"], ["زیرساخت و سکو", "زمان متوسط تأمین منابع", "مجموع زمان تأمین منابع / تعداد منابع تأمین‌شده", "< ۱۵ دقیقه", "ماهانه"], ["زیرساخت و سکو", "درصد خودکارسازی زیرساخت (IaC Coverage)", "(تعداد منابع تعریف‌شده به‌عنوان کد / کل منابع) × ۱۰۰", "> ۹۰٪", "فصلنامه"], ["زیرساخت و سکو", "تعداد مراکز داده فعال متصل", "شمارش مستقیم", "≥ ۳ مرکز داده", "سالانه"], ["پذیرش و ورود دستگاه‌ها", "درصد دستگاه‌های اجرایی متصل", "(تعداد دستگاه‌های متصل / کل دستگاه‌های مشمول) × ۱۰۰", "۸۰٪ (پایان ۱۴۰۷)", "سالانه"], ["پذیرش و ورود دستگاه‌ها", "زمان متوسط ورود دستگاه", "مجموع زمان ورود دستگاه‌ها / تعداد دستگاه‌های ورودیافته", "< ۶ ماه", "سالانه"], ["پذیرش و ورود دستگاه‌ها", "درصد دستگاه‌های دارای گواهینامه انطباق", "(تعداد دستگاه‌های دارای گواهی / کل دستگاه‌های متصل) × ۱۰۰", "> ۹۰٪", "سالانه"], ["پذیرش و ورود دستگاه‌ها", "تعداد درخواست‌های استثنای معماری", "شمارش مستقیم", "< ۵ در سال", "فصلنامه"], ["پذیرش و ورود دستگاه‌ها", "درصد انطباق با Security Baseline", "(تعداد کنترل‌های امنیتی پیاده‌سازی‌شده / کل کنترل‌های الزامی) × ۱۰۰", "۱۰۰٪", "فصلنامه"], ["مهاجرت و بارهای کاری", "درصد سامانه‌های غیرحساس مهاجرتیافته", "(تعداد سامانه‌های غیرحساس مهاجرت‌شده / کل سامانه‌های غیرحساس) × ۱۰۰", "۱۰۰٪ (پایان ۱۴۰۷)", "سالانه"], ["مهاجرت و بارهای کاری", "درصد سامانه‌های حیاتی مهاجرتیافته", "(تعداد سامانه‌های حیاتی مهاجرت‌شده / کل سامانه‌های حیاتی) × ۱۰۰", "≥ ۵۰٪ (۱۴۰۷)، ۱۰۰٪ (۱۴۰۸)", "سالانه"], ["مهاجرت و بارهای کاری", "درصد موفقیت مهاجرت", "(تعداد مهاجرت‌های موفق / کل مهاجرت‌های انجام‌شده) × ۱۰۰", "> ۹۵٪", "فصلنامه"], ["مهاجرت و بارهای کاری", "زمان متوسط مهاجرت هر بار کاری", "مجموع زمان مهاجرت بارهای کاری / تعداد بارهای کاری مهاجرت‌شده", "< ۳ ماه (غیرحساس)، < ۶ ماه (حیاتی)", "سالانه"], ["مهاجرت و بارهای کاری", "تعداد بارهای کاری با استراتژی Re-Architect", "شمارش مستقیم", "> ۳۰٪ کل بارهای کاری", "سالانه"], ["مهاجرت و بارهای کاری", "درصد کاهش زیرساخت‌های موازی", "(زیرساخت‌های حذف‌شده / زیرساخت‌های قبلی) × ۱۰۰", "> ۳۰٪", "سالانه"], ["خدمات مشترک و عملیات", "تعداد خدمات مشترک فعال", "شمارش مستقیم", "≥ ۱۰ سرویس (پایان ۱۴۰۶)", "سالانه"], ["خدمات مشترک و عملیات", "میزان استفاده از خدمات مشترک", "تعداد درخواست‌های API به خدمات مشترک", "رشد ≥ ۲۰٪ سالانه", "ماهانه"], ["خدمات مشترک و عملیات", "درصد پوشش پایش", "(تعداد منابع تحت پایش / کل منابع) × ۱۰۰", "۱۰۰٪", "ماهانه"], ["خدمات مشترک و عملیات", "زمان متوسط تشخیص خطا (MTTD)", "جمع زمان‌های تشخیص خطا / تعداد خطاها", "< ۵ دقیقه", "ماهانه"], ["خدمات مشترک و عملیات", "زمان متوسط بازیابی (MTTR)", "جمع زمان‌های بازیابی / تعداد حوادث", "< ۶۰ دقیقه (حیاتی)، < ۴ ساعت (غیرحساس)", "ماهانه"], ["خدمات مشترک و عملیات", "درصد رعایت توافق‌نامه سطح خدمت (SLA)", "(تعداد SLAهای رعایت‌شده / کل SLAهای تعریف‌شده) × ۱۰۰", "> ۹۹٪", "فصلنامه"], ["خدمات مشترک و عملیات", "درصد عملیات خودکار", "(تعداد عملیات خودکار / کل عملیات) × ۱۰۰", "> ۸۰٪", "سالانه"], ["خدمات مشترک و عملیات", "تعداد گزارش‌های ممیزی انجام‌شده", "شمارش مستقیم", "≥ ۲ گزارش در سال", "سالانه"], ["امنیت", "تعداد حوادث امنیتی بحرانی", "شمارش مستقیم", "۰", "ماهانه"], ["امنیت", "زمان متوسط شناسایی تهدید (MTTD)", "جمع زمان شناسایی تهدیدات / تعداد تهدیدات شناسایی‌شده", "< ۱ ساعت", "ماهانه"], ["امنیت", "زمان متوسط پاسخ به حادثه (MTTR)", "جمع زمان پاسخ به حوادث / تعداد حوادث", "< ۴ ساعت (بحرانی)، < ۲۴ ساعت (غیربحرانی)", "ماهانه"], ["امنیت", "درصد پوشش رمزنگاری داده‌ها", "(داده‌های رمزنگاری‌شده / کل داده‌ها) × ۱۰۰", "۱۰۰٪", "فصلنامه"], ["امنیت", "درصد پوشش مدیریت هویت و دسترسی (IAM)", "(کاربران و سرویس‌های تحت IAM / کل کاربران و سرویس‌ها) × ۱۰۰", "۱۰۰٪", "فصلنامه"], ["امنیت", "درصد آسیب‌پذیری‌های اصلاح‌شده", "(تعداد آسیب‌پذیری‌های اصلاح‌شده / کل آسیب‌پذیری‌های کشف‌شده) × ۱۰۰", "> ۹۵٪ در بازه SLA", "ماهانه"], ["امنیت", "درصد انطباق با معماری اعتماد صفر", "(تعداد کنترل‌های Zero Trust پیاده‌سازی‌شده / کل کنترل‌های الزامی) × ۱۰۰", "> ۸۰٪ (سال اول)، ۱۰۰٪ (سال سوم)", "سالانه"], ["امنیت", "تعداد تمرین‌های مانور امنیتی انجام‌شده", "شمارش مستقیم", "≥ ۲ مانور در سال", "سالانه"], ["هزینه و مالی", "کاهش هزینه‌های زیرساخت IT دولت", "(هزینه قبل - هزینه بعد) / هزینه قبل × ۱۰۰", "≥ ۲۰٪ (پایان ۱۴۰۸)", "سالانه"], ["هزینه و مالی", "نسبت هزینه به مصرف", "هزینه کل / تعداد تراکنش‌ها", "کاهش ≥ ۱۰٪ سالانه", "فصلنامه"], ["هزینه و مالی", "درصد منابع بلااستفاده یا کم‌استفاده", "(منابع بلااستفاده / کل منابع تخصیص‌یافته) × ۱۰۰", "< ۱۰٪", "ماهانه"], ["هزینه و مالی", "شفافیت هزینه", "درصد دستگاه‌های دارای گزارش هزینه شفاف", "۱۰۰٪", "فصلنامه"], ["هزینه و مالی", "درصد انطباق با بودجه دستگاه‌ها", "(دستگاههای دارای مصرف منطبق با بودجه / کل دستگاهها) × ۱۰۰", "> ۹۰٪", "فصلنامه"], ["هزینه و مالی", "نسبت هزینه عملیاتی به هزینه سرمایه‌ای (OPEX/CAPEX)", "هزینه عملیاتی / هزینه سرمایه‌ای", "کاهش OPEX نسبت به CAPEX", "سالانه"], ["بلوغ و تکامل", "میانگین سطح بلوغ دستگاه‌های اجرایی", "میانگین امتیاز بلوغ تمام دستگاه‌ها", "سطح ۳ (۱۴۰۷)، سطح ۴ (۱۴۰۸)", "سالانه"], ["بلوغ و تکامل", "سطح بلوغ هسته ملی", "ارزیابی بر اساس مدل پنج‌سطحی", "سطح ۵ (تطبیق‌پذیر) تا پایان ۱۴۰۸", "سالانه"], ["بلوغ و تکامل", "تعداد دستگاه‌های دارای برنامه ارتقای بلوغ", "شمارش مستقیم", "> ۸۰٪ دستگاه‌ها", "سالانه"], ["بلوغ و تکامل", "تعداد بازبینی‌های معماری انجام‌شده", "شمارش مستقیم", "≥ ۱ بازبینی جزئی سالانه، ≥ ۱ بازبینی اساسی هر ۳ سال", "سالانه"], ["بلوغ و تکامل", "درصد پیاده‌سازی درس‌آموخته‌ها در معماری", "(تعداد درس‌آموخته‌های اعمال‌شده / کل درس‌آموخته‌های شناسایی‌شده) × ۱۰۰", "> ۸۰٪", "سالانه"], ["رضایت و کیفیت خدمات", "رضایت دستگاه‌های اجرایی", "میانگین امتیاز رضایت‌سنجی (مقیاس ۱-۱۰)", "≥ ۸ از ۱۰", "سالانه"], ["رضایت و کیفیت خدمات", "درصد درخواست‌های پشتیبانی حل‌شده در SLA", "(تعداد درخواست‌های حل‌شده در بازه SLA / کل درخواست‌ها) × ۱۰۰", "> ۹۵٪", "ماهانه"], ["رضایت و کیفیت خدمات", "تعداد شکایات ثبت‌شده درباره کیفیت خدمات", "شمارش مستقیم", "کاهش مستمر", "فصلنامه"], ["رضایت و کیفیت خدمات", "درصد خدمات دارای مستندات کامل", "(تعداد خدمات با مستندات کامل / کل خدمات) × ۱۰۰", "۱۰۰٪", "سالانه"]];
+var kpCat='همه';
+function drawKp(){var cats=['همه'].concat(KP.map(function(k){return k[0]}).filter(function(v,i,a){return a.indexOf(v)===i}));
+  $('kpi-sub').innerHTML=cats.map(function(c){return '<button type="button" class="chip" data-c="'+c+'" aria-pressed="'+(c===kpCat)+'">'+c+'</button>'}).join('');
+  var q=$('kpi-q').value.trim().toLowerCase();var rows=KP.filter(function(k){return (kpCat==='همه'||k[0]===kpCat)&&(!q||k.join(' ').toLowerCase().indexOf(q)>=0)});
+  $('kpi-t').innerHTML='<tr><th>حوزه</th><th>شاخص و فرمول</th><th>هدف پیشنهادی</th><th>گزارش</th></tr>'+(rows.length?rows.map(function(k){return '<tr><td>'+esc(k[0])+'</td><td><b>'+esc(k[1])+'</b><br><span style="color:var(--muted);font-size:12.5px">'+esc(k[2])+'</span></td><td>'+esc(k[3])+'</td><td>'+esc(k[4])+'</td></tr>'}).join(''):'<tr><td colspan="4">شاخصی با این جست‌وجو پیدا نشد.</td></tr>');}
+$('kpi-sub').addEventListener('click',function(e){var b=e.target.closest('button');if(b){kpCat=b.dataset.c;drawKp()}});$('kpi-q').addEventListener('input',drawKp);drawKp();
+
+/* ---------- glossary ---------- */
+var GL=[['GCRA','معماری مرجع ابر دولت ایران؛ تخصصی‌سازی CCRA برای دولت.'],['CCRA','معماری مرجع رایانش ابری (ISO/IEC 22123 و ITU-T Y.3502) که مبنای GCRA است.'],['Preserve and Extend','اصل حفظ ساختار CCRA و افزودن قابلیت‌های دولتی.'],['قابلیت عرضی (Cross-Cutting)','قابلیتی که از هر چهار لایه می‌گذرد، مثل امنیت و OSS. لایهٔ پنجم نیست.'],['خدمت منطقی','خدمتی که یک قابلیت را عرضه می‌کند و با یک یا چند جزء پیاده می‌شود.'],['خدمت مشترک','خدمتی که چند دستگاه از آن استفادهٔ مجدد می‌کنند؛ زیرساختی، سکویی یا کاربردی.'],['نهاد ناظر ابر دولت','یک نقش در لایهٔ کاربری، نه الزاما یک سازمان جدید.'],['هستهٔ ملی (National Core)','سطح دوم توپولوژی با خدمات مشترک ملی مثل فدراسیون هویت و سکوی تبادل داده.'],['Federation Gateway','نقطهٔ اتصال ابرهای دستگاهی، منطقه‌ای و بیرونی با اعمال سیاست و فدراسیون هویت.'],['مرز اعتماد','مرزی که با هویت، رمزنگاری، امنیت API و شبکه، سیاست، پایش و ممیزی کنترل می‌شود.'],['Landing Zone','الگوی استقرار و Guardrail استاندارد برای ورود هر دستگاه؛ لایهٔ معماری نیست.'],['Guardrail','کنترل پیش‌فرضی که جلوی پیکربندی خارج از سیاست را می‌گیرد.'],['Workload Placement','جانمایی بار کاری در یکی از پنج ناحیه بر پایهٔ طبقه‌بندی آن.'],['Data Residency','محل اقامت داده؛ در لایهٔ منبع اعمال می‌شود.'],['Exit Strategy','راهبرد خروج از ابر بیرونی؛ برای استفاده از آن الزامی است.'],['Zero Trust','معماری امنیتی عرضی بر پایهٔ NIST SP 800-207؛ هیچ دسترسی پیش‌فرض مورد اعتماد نیست.'],['IAM و PAM','مدیریت هویت و دسترسی، و مدیریت دسترسی ممتاز.'],['IaC','زیرساخت به‌صورت کد؛ پایهٔ Landing Zone قالبی.'],['Policy as Code','بیان سیاست به‌صورت کد برای اعمال و انطباق خودکار.'],['OSS','پشتیبانی عملیات: مشاهده‌پذیری، مدیریت عملیات و تضمین کیفیت خدمت.'],['BSS','پشتیبانی کسب‌وکار: کاتالوگ خدمت، SLA، Metering و قرارداد.'],['FinOps','شفافیت و بهینه‌سازی هزینهٔ ابر؛ در دولت لزوما دریافت پول نیست.'],['Showback و Chargeback','نمایش هزینه به مصرف‌کننده، یا تخصیص واقعی آن.'],['Deployment Gate','شرط ورود به محیط عملیاتی: لاگ، متریک، Health Check، هشدار و Audit Trail.'],['Definition of Done','شش پله: Technology، Functionality، Integration، Security، Operations، Governance.'],['ADR','ثبت تصمیم معماری؛ هر تصمیم مهم استقرار با آن مستند می‌شود.'],['RTO و RPO','زمان هدف بازیابی و نقطهٔ هدف بازیابی؛ مبنای انتخاب Active-Active یا Active-Standby.'],['CAF و WAF','چارچوب پذیرش ابر و چارچوب کیفیت بار کاری؛ مکمل GCRA و Landing Zone.'],['API-First','هر خدمت اول از راه API تعریف و عرضه می‌شود.'],['Edge','نود مرزی برای تأخیر کم و پردازش محلی؛ الگوی استقرار است، نه لایه.'],['CSP','فراهم‌کنندهٔ خدمات ابری؛ از اپراتور ابر دولت قابل تفکیک است.']];
+function drawGl(){var q=$('gl-q').value.trim().toLowerCase();var r=GL.filter(function(g){return !q||g.join(' ').toLowerCase().indexOf(q)>=0});
+  $('gl').innerHTML=r.length?r.map(function(g){return '<div><dt>'+esc(g[0])+'</dt><dd>'+esc(g[1])+'</dd></div>'}).join(''):'<div><dd>واژه‌ای با این جست‌وجو پیدا نشد.</dd></div>';}
+$('gl-q').addEventListener('input',drawGl);drawGl();
+
+/* ---------- additions from the book ---------- */
+function tbl(id,head,rows){$(id).innerHTML='<tr>'+head.map(function(h){return '<th>'+h+'</th>'}).join('')+'</tr>'+rows.map(function(r){return '<tr>'+r.map(function(c,i){return '<td>'+(i===0?'<b>'+esc(c)+'</b>':esc(c))+'</td>'}).join('')+'</tr>'}).join('')}
+tbl('mx',['لایه','دامنه','قابلیت','خدمت منطقی','واسط','عرضی','استاندارد'],[['کاربر','هویت','فدراسیون هویت','فدراسیون','Identity API','امنیت','TBD'],['دسترسی','اتصال','مدیریت API','درگاه API','REST / API','امنیت و OSS','TBD'],['خدمت','خدمات ابری','PaaS','PaaS دولت','Platform API','امنیت و OSS','TBD'],['منبع','محاسبات','مجازی‌سازی','محاسبات','Infrastructure API','OSS','TBD'],['منبع','داده','ذخیره‌سازی داده','سکوی داده دولت','Data API','حکمرانی و امنیت','TBD'],['عرضی','OSS','نظارت','مشاهده‌پذیری','Telemetry API','OSS','TBD'],['عرضی','BSS','مدیریت هزینه','FinOps','Cost API','BSS','TBD'],['عرضی','امنیت','اعتماد صفر','سیاست','Authorization API','امنیت','SP 800-207']]);
+tbl('gov-duty',['نهاد','وظایف اصلی','جلسات'],[['شورای عالی ابر دولت','تصویب سیاست‌های کلان، تخصیص منابع، تعرفه‌ها، حل تعارض‌های راهبردی','دو جلسه در سال'],['کمیتهٔ حکمرانی معماری','تصویب و به‌روزرسانی GCRA، تأیید انطباق پروژه‌ها، مدیریت استثناها، تصویب استانداردهای جدید، ارزیابی دوره‌ای بلوغ','ماهانه'],['زیرکمیتهٔ معماری','الگوهای معماری، اثر فناوری‌های جدید، نگهداری ماتریس ردیابی','دوماهانه'],['زیرکمیتهٔ امنیت','سیاست‌های امنیتی، بررسی حوادث، به‌روزرسانی Security Baseline، ارزیابی ریسک','ماهانه'],['زیرکمیتهٔ داده','سیاست‌های حکمرانی داده، نظارت بر حاکمیت ملی داده، بررسی درخواست‌های تبادل داده','ماهانه'],['کارگروه‌های تخصصی','پیگیری اجرای فازها، دستورالعمل‌های تفصیلی، بازخورد به کمیتهٔ معماری','هفتگی یا دوهفتگی']]);
+tbl('gov-eval',['نوع ارزیابی','هدف','مخاطب','زمان'],[['ارزیابی آمادگی','سنجش آمادگی برای ورود به ابر دولت','دستگاه‌های اجرایی','پیش از اتصال'],['انطباق معماری','تأیید انطباق پروژه با GCRA','پروژه‌ها و بارهای کاری','پیش از عملیاتی‌شدن'],['سطح بلوغ','سنجش سطح بلوغ دستگاه‌ها','دستگاه‌های اجرایی','سالانه'],['ارزیابی امنیتی','وضعیت امنیتی و انطباق','همهٔ محیط‌ها','هر ۶ ماه یا پس از حادثه']]);
+tbl('gov-audit',['نوع ممیزی','هدف','مجری','دوره'],[['ممیزی داخلی','انطباق عملیاتی','تیم داخلی دستگاه','فصلی'],['ممیزی خارجی (ناظر)','انطباق با GCRA','نهاد ناظر ابر دولت','سالانه'],['ممیزی امنیتی','وضعیت امنیتی','تیم امنیت مستقل','هر ۶ ماه'],['ممیزی مالی','هزینه‌ها و FinOps','سازمان بازرسی یا دیوان محاسبات','سالانه']]);
+tbl('gov-actors',['بازیگر','نقش کلیدی','مسئولیت‌های اصلی'],[['هیئت وزیران','تصویب سیاست‌های کلان','تأمین منابع، تصویب تعرفه‌ها'],['نهاد ناظر ابر دولت','حکمرانی معماری','تدوین GCRA، تأیید انطباق، مدیریت استثناها، نظارت بر اجرا'],['وزارت ارتباطات','اجرا و عملیات','ایجاد زیرساخت، تدوین دستورالعمل‌ها، تأمین شبکه'],['سازمان برنامه و بودجه','تأمین مالی و ارزیابی','دستورالعمل ارزیابی، منابع مالی، تعرفه'],['فراهم‌کنندهٔ ابر','تأمین زیرساخت','ارائهٔ زیرساخت و خدمات ابری با رعایت استانداردها'],['اپراتور ابر','بهره‌برداری','عملیات روزانه، پایش، مدیریت حادثه، پشتیبانی'],['دستگاه اجرایی','مصرف و تولید','ارزیابی مراکز داده، اتصال و انتقال، مالکیت داده'],['مرکز ملی فضای مجازی','نظارت حاکمیتی','نظارت بر امنیت و حاکمیت ملی در فضای مجازی']]);
+/* onboarding */
+var OB=[['ارزیابی آمادگی','سنجش آمادگی فنی، سازمانی و عملیاتی دستگاه در هشت حوزه: کارپوشهٔ برنامه‌ها، طبقه‌بندی داده‌ها، وضعیت امنیتی، آمادگی شبکه، آمادگی هویت، آمادگی عملیاتی، مهارت‌های ابری و حیاتی‌بودن کسب‌وکاری.'],['برنامه‌ریزی و طراحی','برنامهٔ عملیاتی: خلاصهٔ ارزیابی، راهبرد مهاجرت هر بار کاری (6R)، جدول زمانی، برآورد منابع، مدیریت ریسک و برنامهٔ آزمون. معیارهای جانمایی: حساسیت داده، تأخیر مجاز، دسترس‌پذیری، الزامات حاکمیتی و هزینه.'],['استقرار Landing Zone','محیط پایهٔ استاندارد دستگاه: یکپارچه‌سازی هویت، پیکربندی پایهٔ شبکه و امنیت، ثبت وقایع و پایش، گاردریل‌های سیاستی، پشتیبان‌گیری و بازیابی.'],['مهاجرت و بهره‌برداری','سه گام کارخانهٔ مهاجرت: ارزیابی (کشف اپلیکیشن‌ها و وابستگی‌ها)، مهاجرت (انتقال داده و برنامه)، اعتبارسنجی (تست امنیتی، عملکردی و انطباق).'],['بهبود مستمر','پایش عملکرد، هزینه، امنیت و دسترس‌پذیری؛ بهینه‌سازی هزینه با Government FinOps؛ به‌روزرسانی امنیتی؛ ارزیابی دوره‌ای بلوغ؛ بازخورد به نهاد ناظر.']];
+$('ob-steps').innerHTML=OB.map(function(s,i){return '<button type="button" class="row" data-i="'+i+'"><span class="n">'+fa(i+1)+'</span><span><b>'+s[0]+'</b></span></button>'}).join('');
+function showOb(i){[].forEach.call($('ob-steps').children,function(b,k){b.classList.toggle('sel',k===i)});$('d-ob').innerHTML='<span class="tag">مرحلهٔ '+fa(i+1)+' از ۵</span><h3>'+OB[i][0]+'</h3><p>'+OB[i][1]+'</p>'}
+$('ob-steps').addEventListener('click',function(e){var b=e.target.closest('button');if(b)showOb(+b.dataset.i)});showOb(0);
+var RD=[['کارپوشهٔ برنامه‌ها',20],['طبقه‌بندی داده‌ها',25],['وضعیت امنیتی',35],['آمادگی شبکه',25],['آمادگی هویت',25],['آمادگی عملیاتی',25],['مهارت‌های ابری',25],['حیاتی‌بودن کسب‌وکاری',20]];
+var RL=[[80,'ناآماده','دستگاه آمادگی لازم برای اتصال را ندارد.','اقدام اصلاحی اساسی در همهٔ حوزه‌ها؛ مطالعهٔ فصل هفتم کتاب.','bad'],[120,'تا حدی آماده','در برخی حوزه‌ها آمادگی هست، اما شکاف‌های قابل توجهی وجود دارد.','تدوین برنامهٔ عملیاتی برای رفع شکاف‌ها (بخش ۷۸.۱).','bad'],[160,'آماده','دستگاه در اکثر حوزه‌ها آمادگی لازم را دارد.','تکمیل شکاف‌های جزئی و شروع فرآیند اتصال (بخش ۷۸).','ok'],[200,'کاملا آماده','آمادگی کامل برای اتصال و مهاجرت.','شروع اتصال و انتقال بر پایهٔ بخش ۷۸ و ۷۹.','ok']];
+$('rd').innerHTML=RD.map(function(d,i){return '<div class="sl"><label for="r'+i+'">'+d[0]+' <small>(حداکثر '+fa(d[1])+')</small></label><input type="range" id="r'+i+'" min="'+(d[1]/5)+'" max="'+d[1]+'" step="1" value="'+Math.round(d[1]*0.6)+'"><output id="ro'+i+'" for="r'+i+'"></output></div>'}).join('')+'<div class="note">هر زیرحوزه از ۱ تا ۵ امتیاز می‌گیرد، پس کمترین امتیاز هر حوزه یک‌پنجم حداکثر آن است. مقادیر اولیه نمونه است.</div>';
+function rd(){var t=0,low=null;RD.forEach(function(d,i){var v=+$('r'+i).value;t+=v;$('ro'+i).textContent=fa(v);var pc=v/d[1];if(!low||pc<low[1])low=[d[0],pc]});
+  var L=RL.filter(function(l){return t<=l[0]})[0];
+  $('d-rd').innerHTML='<span class="tag">امتیاز از ۲۰۰</span><div class="score">'+fa(t)+'</div><p><span class="badge '+L[4]+'">'+L[1]+'</span></p><p>'+L[2]+'</p><dl><dt>اقدام پیشنهادی</dt><dd>'+L[3]+'</dd><dt>ضعیف‌ترین حوزه</dt><dd>'+low[0]+' ('+fa(Math.round(low[1]*100))+'٪)</dd></dl><div class="note">بازه‌ها (جدول ۷۰): تا ۸۰ ناآماده، ۸۱ تا ۱۲۰ تا حدی آماده، ۱۲۱ تا ۱۶۰ آماده، ۱۶۱ تا ۲۰۰ کاملا آماده.</div>';}
+$('rd').addEventListener('input',rd);rd();
+$('r6').innerHTML=[['Rehost','انتقال بدون تغییر (Lift & Shift)','سامانه‌های پایدار'],['Replatform','انتقال با تغییرات جزئی','سامانه‌های نیازمند بهبود عملکرد'],['Refactor','بازنویسی برای Cloud-Native','سامانه‌های راهبردی'],['Repurchase','جایگزینی با SaaS','سامانه‌های غیراختصاصی'],['Retain','نگهداری موقت در محیط فعلی','سامانه‌های با محدودیت مهاجرت'],['Retire','بازنشستگی','سامانه‌های غیرضروری']].map(function(r){return '<div class="card"><h4 class="en" style="text-align:right">'+r[0]+'</h4><p>'+r[1]+'<br><b style="color:var(--ink)">کاربرد:</b> '+r[2]+'</p></div>'}).join('');
+var SC=[['مصرف‌کنندهٔ سبک (API/Web)','مصرف سرویس','کم','کم','بسیار کم','متوسط'],['مصرف‌کنندهٔ مشترک (SaaS)','مصرف سرویس مشترک','کم','کم','کم','زیاد'],['ایستگاه کاری ابری (VDI)','محیط کاربری','متوسط','متوسط','متوسط','متوسط'],['پشتیبان و بازیابی (Backup as a Service)','حفاظت داده','کم تا متوسط','کم','کم','زیاد'],['میزبانی سرویس‌های تخصصی (PaaS)','پلتفرم','متوسط','متوسط','متوسط','زیاد'],['ابر ترکیبی (Hybrid Cloud)','اتصال چند محیط','متوسط تا زیاد','زیاد','متوسط','بسیار زیاد'],['ابر متمرکز داده و تحلیل (Data Lake)','داده و تحلیل','زیاد در بعد داده','زیاد','زیاد','بسیار زیاد'],['ابر اختصاصی دولتی (Private Cloud)','محیط اختصاصی','زیاد','زیاد','متوسط','زیاد'],['مهاجرت کامل زیرساختی (Full IaaS)','مهاجرت زیرساخت','بسیار زیاد','زیاد','زیاد','بسیار زیاد'],['تأمین‌کننده و ارائه‌دهندهٔ سرویس (Co-Provider)','مشارکت در ارائه','بسیار زیاد','بسیار زیاد','متوسط','راهبردی'],['مصرف لبه (Edge / On-Prem)','پردازش مرزی','تخصصی','زیاد','متوسط','راهبردی'],['بازیابی پایدار در مقیاس ملی (DRaaS)','تاب‌آوری','زیاد','زیاد','متوسط','بسیار زیاد'],['بستر توسعهٔ مشترک (Dev Platform)','توسعه و عملیات','زیاد','زیاد','متوسط','بسیار زیاد']];
+function drawSc(){var q=$('sc-q').value.trim().toLowerCase();var r=SC.map(function(s,i){return [fa(i+1)+'. '+s[0]].concat(s.slice(1))}).filter(function(s){return !q||s.join(' ').toLowerCase().indexOf(q)>=0});
+  if(r.length)tbl('sc-t',['سناریو','ماهیت','شدت اتصال','پیچیدگی','ریسک مهاجرت','ارزش راهبردی'],r);else $('sc-t').innerHTML='<tr><td>سناریویی با این جست‌وجو پیدا نشد.</td></tr>';}
+$('sc-q').addEventListener('input',drawSc);drawSc();
 })();
-
-// ─── NAV SCROLL ───
-const nav=document.getElementById('nav');
-window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>20));
-
-// ─── MOBILE MENU ───
-document.getElementById('navToggle').addEventListener('click',()=>{
-  document.getElementById('navLinks').classList.toggle('open');
-});
-document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>{
-  document.getElementById('navLinks').classList.remove('open');
-}));
-
-// ─── BACK TO TOP ───
-const btt=document.getElementById('btt');
-window.addEventListener('scroll',()=>btt.classList.toggle('show',window.scrollY>400));
-btt.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
-
-// ─── FAQ ACCORDION ───
-document.querySelectorAll('.faq-q').forEach(q=>{
-  q.addEventListener('click',()=>{
-    const item=q.parentElement;
-    const wasOpen=item.classList.contains('open');
-    document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
-    if(!wasOpen)item.classList.add('open');
-  });
-});
-
-// ─── REVEAL ON SCROLL ───
-const observer=new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target);}});
-},{threshold:0.15});
-document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
-
-// ─── COUNTER ANIMATION ───
-const counterObserver=new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      const el=e.target;
-      const target=parseInt(el.dataset.target);
-      let current=0;
-      const step=Math.ceil(target/40);
-      const timer=setInterval(()=>{
-        current+=step;
-        if(current>=target){current=target;clearInterval(timer);}
-        el.textContent=current.toLocaleString('fa-IR');
-      },30);
-      counterObserver.unobserve(el);
-    }
-  });
-},{threshold:0.5});
-document.querySelectorAll('.stat-num').forEach(el=>counterObserver.observe(el));
 </script>
 </body>
 </html>
